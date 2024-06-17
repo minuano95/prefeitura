@@ -1,0 +1,110 @@
+body {
+    background-image: url('/static/home/images/bg1.avif');
+    color: #dddddd !important;
+    font-size: 13px !important;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.bx {
+    font-size: 15px !important;
+}
+
+.nav_logo {
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+
+.card {
+    display: grid; /* Mantém o display como flexível, mas inline */
+    flex-direction: row;
+    background:  none;
+    border-radius: 10px;
+    /* box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px; */
+    margin-top: 11vh;
+    margin-bottom: 0;
+    max-height: 83vh; /* Defina a altura máxima para 90% da altura da janela de visualização */
+    overflow: hidden; /* Adicione uma barra de rolagem se o conteúdo exceder a altura máxima */
+    justify-content: center;
+    border: none;
+}
+
+
+button {
+    border: none;
+    padding-bottom: 0.5vh;
+    padding-top: 0.5vh;
+    height: 5vh;
+    border-radius: 5px;
+    font-size: 13px; /* Tamanho da fonte */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #dddddd;
+    font-weight: 500;
+    margin-bottom: 2vh;
+    border: none;
+}
+
+button::selection {
+    border: none;
+}
+
+.posicao-financeira {
+    background-color: #bc3434;
+}
+
+.contato {
+    background-color: #55ab4d;
+}
+
+.swal-container-dark {
+    background-color: #333;
+}
+.swal-popup-dark {
+    background-color: #444;
+}
+.swal-header-dark {
+    background-color: #555;
+}
+.swal-title-dark {
+    color: #fff;
+}
+.swal-content-dark {
+    color: #dddddd;
+}
+
+#swal2-html-container {
+    color: #dddddd !important;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#body-pd > div.container > div.main_content > div > div.button-container {
+    margin: auto;
+}
+
+#body-pd > div.container > div.main_content > div > div.button-container > button {
+    background-color: black !important;
+    margin-left: 0.6vh !important;
+    width: 30vh;
+}
+
+#body-pd > div.container > div.main_content > div > div.logo > img {
+    width: 40vh;
+    height: 40vh;
+    border-radius: 100%;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    #body-pd > div.container > div.main_content > div > div.logo > img {
+        width: 36vh;
+        height: 36vh;
+        border-radius: 100%;
+    }
+}
