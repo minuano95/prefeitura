@@ -9,8 +9,8 @@ class Setor(models.Model):
     status = models.BooleanField(default=True)
 
     def __str__(self) -> str:
-        return f'{self.id} | {self.nome}'
-
+        return f'{self.nome}'
+    
 class Funcionario(models.Model):
     NIVEIS = [
         ('adm_sistema', 'Administrador do Sistema'),
@@ -27,7 +27,17 @@ class Funcionario(models.Model):
     status = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.id} | {self.setor} | {self.nome}'
+        return f'{self.setor} | {self.nome}'
+
+class Perfil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+
+    # Outros campos do perfil, se necessário
+
+    def __str__(self):
+        return self.user.username
+
     
 class Chamados(models.Model):
     descricao = models.CharField(max_length=280)
@@ -38,4 +48,4 @@ class Chamados(models.Model):
     data_limite = models.DateTimeField()
 
     def __str__(self) -> str:
-        return f'{self.id} | {self.setor} | {self.data_abertura}'
+        return f'{self.id} - {self.setor} - {self.data_abertura}'

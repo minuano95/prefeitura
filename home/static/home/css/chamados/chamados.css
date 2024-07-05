@@ -1,0 +1,31 @@
+body {
+    background-image: radial-gradient(ellipse at right, #4da6bd, #a097a7);
+    color: #dddddd !important;
+    font-size: 13px !important;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.bx {
+    font-size: 15px !important;
+}
+
+.nav_logo {
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+
+.card {
+    display: grid; /* Mantém o display como flexível, mas inline */
+    flex-direction: row;
+    background:  none;
+    border-radius: 10px;
+    /* box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px; */
+    margin-top: 11vh;
+    margin-bottom: 0;
+    max-height: 83vh; /* Defina a altura máxima para 90% da altura da janela de visualização */
+    overflow: hidden; /* Adicione uma barra de rolagem se o conteúdo exceder a altura máxima */
+    justify-content: center;
+    border: none;
+}

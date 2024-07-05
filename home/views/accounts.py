@@ -9,7 +9,6 @@ def login_view(request):
 
         user = loginForm['username'].value()
         password = loginForm['password'].value()
-        print(user, password)
 
         if loginForm.is_valid():
             user = loginForm.get_user()
