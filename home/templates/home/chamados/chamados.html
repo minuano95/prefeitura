@@ -14,5 +14,118 @@
 {% endblock %}
 
 {% block content %}
-<h1 style="margin-top: 8vh !important">Estamos aqui</h1>
+<div class="container">
+	<div class="page">
+		<div class="card">
+			<div class="card-body">
+				<div class="card">        
+					<div class="card-header d-flex justify-content-between align-items-center">
+						<span class="float-right">
+							<span class="mr-4 navTask" id="mostrarAgendamentos">Em aberto</span> |
+							<span class="mr-4 navTask" id="mostrarConcluidos">Concluídos</span>
+						</span>
+					</div>
+
+					<div class="card-agendamentos">
+						{% if agendamentos %}
+							{% for agendamento in agendamentos %}
+								<div class="{% if agendamento.status %} agendamentosConcluidos {% else %} agendamentos {% endif %}" style="{% if agendamento.status %} display: none {% endif %}">
+									<div class="agenda-item" data-agendamento-data="{{ agendamento.status }}" data-agendamento-concluido="{{ agendamento.status }}">
+										<p class="rotulo">Descrição</p>
+										<div class="agenda-header">
+											<p for="checkbox{{ agendamento.id }}" style="font-weight: 600; overflow: hidden;
+											white-space: nowrap;
+											text-overflow: clip;">{{ agendamento.descricao }}</label>
+										</div>
+
+										<p class="rotulo">Abriu Chamado</p>
+										<p class="description">{{ agendamento.funcionario_abriu.nome }}</p>
+
+										<p class="rotulo">Setor do Chamado</p>
+										<p class="description">{{ agendamento.setor.nome }}</p>
+										
+										{% if agendamento.status %}
+											<p class="rotulo">Fechou Chamado</p>
+											<p class="description">{{ agendamento.funcionario_fechou.nome }}</p>
+										{% endif %}
+		
+										<p class="rotulo">Data de Abertura</p>
+										<p class="description-data" style="font-weight: 600;">{{ agendamento.data_abertura|date:"d/m/Y" }} {{ agendamento.data_abertura|time:"H:i" }}</p>
+
+										{% if agendamento.status %}
+											<p class="rotulo">Data de Fechamento</p>
+											<p class="description-data" style="font-weight: 600;">{{ agendamento.data_fechamento|date:"d/m/Y" }} {{ agendamento.data_fechamento|time:"H:i" }}</p>
+										{% endif %}
+											
+
+
+											
+
+										<div class="alteracoes-conteiner">
+											<span class="editar-agendamento" data-agendamento-id="{{ agendamento.id }}"> 
+											
+												<a href="{% url 'home:edita_chamado' agendamento.id %}">Editar</a></span>
+												<span class="cancelar-agendamento"><a href="{% url 'home:deleta_chamado' agendamento.id %}">Excluir</a></span>
+												
+										</div>
+									</div> 
+								</div> 
+								
+							{% endfor %}
+						{% else %}
+							<p>Não há agendamentos.</p>
+						{% endif %}
+					</div>
+				</div> 
+			</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#mostrarAgendamentos').on('click', function() {
+            $('.agendamentos').show();
+            $('.agendamentosConcluidos').hide();
+            
+            $('p.text-muted').show();
+            $('#labelConcluidos').hide();    
+
+            $('.agenda-item .description').css('margin-left', '22px');
+        });
+
+        // Mostra os agendamentos concluídos quando "Concluídos" é clicado
+        
+        $('#mostrarConcluidos').on('click', function() {
+            $('.agendamentos').hide();
+            $('.agendamentosConcluidos').show();
+            
+            $('p.text-muted').hide();
+            $('#labelConcluidos').show();
+
+            $('.agenda-item .description').css('margin-left', '0');
+        });
+    });
+</script>
+
+<script>
+    function processarAgendaItems() {
+        $('.agenda-item').each(function() {
+            var agendamentoData = $(this).data('agendamento-data');
+
+            console.log('Concluido: ' + agendamentoData)
+            if (agendamentoData === 'False') {
+                $(this).removeClass('concluido');
+                $(this).addClass('passado');
+            } else {
+                $(this).removeClass('passado');
+                $(this).addClass('concluido');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        processarAgendaItems();
+    });
+</script>
 {% endblock %}

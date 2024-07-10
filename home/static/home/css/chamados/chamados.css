@@ -1,13 +1,485 @@
 body {
     background-image: radial-gradient(ellipse at right, #4da6bd, #a097a7);
     color: #dddddd !important;
-    font-size: 13px !important;
+    font-size: 14px;
     padding-top: 2%;
     padding-bottom: 2%;
+    font-size: 13px !important;
+}
+
+.container {
+    max-width: 100% !important;
+}
+
+
+.card {
+    min-height: 55vh;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    width: 100%;
+    margin: auto;
+    background-color: #222029;;
+    color: #dddddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-body {
+    margin: 0;
+    flex: 1 1 auto;
+    padding: 0;
+    padding-top: 0;
+}
+.card-header:first-child {
+    border-radius: .25rem .25rem 0 0;
+    display: flex;
+}
+.card-header {
+    border-bottom-width: 1px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 0 solid transparent;
 }
 
 .bx {
-    font-size: 15px !important;
+    font-size: 14px !important;
+}
+
+.nav_logo {
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div.card-header.pb-0 > span {
+    font-weight: 500
+}
+
+
+.float-right {
+    font-weight: 500;
+    margin-inline: 1vh;
+}
+
+#mostrarAgendamentos {
+    color: #b57b1e !important;
+    font-weight: 500;
+}
+
+#mostrarConcluidos {
+    color: #59b390;
+    font-weight: 500;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-header.d-flex.justify-content-between.align-items-center > span {
+    margin-left: auto;
+    font-weight: 450
+}
+
+
+.today,
+.tomorrow {
+    font-size: 25px;
+    font-weight: 500
+}
+
+
+.heading2 {
+    margin-top: 6%
+}
+
+.fa-calendar,
+.fa-circle-thin,
+.fa-star {
+    color: white;
+}
+
+.time {
+    color: #222222;
+    font-size: 12px
+}
+
+.fa-plus {
+    display: inline-block;
+    border-radius: 25px;
+    background-color: #e3e1e1;
+    color: #222222;
+    size: 10px;
+    padding: 2px
+}
+
+.task {
+    font-weight: 500
+}
+
+.task2 {
+    opacity: 0.5
+}
+
+.fa-thumb-tack,
+.fa-exchange,
+.fa-user {
+    background-color: #222222;
+    color: white;
+    display: inline-block;
+    border-radius: 25px;
+    padding: 3px
+}
+
+.card-header {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0px;
+    margin-top: 1%;
+    margin-bottom: 2vh !important;
+    padding-bottom: 1vh;
+    border-bottom: 1px solid #6c757d;
+}
+
+.card-header span {
+    font-weight: 500;
+}
+
+.card-header i {
+    margin-left: 2vh;
+    font-weight: 400;
+    color: #a48eff;
+}
+
+.navTask {
+    color: #ddd;
+}
+
+#labelConcluidos {
+    display: none;
+}
+
+.fa-bars {
+    color: #36A2EB
+}
+
+/* Estilos padrão */
+body {
+    background-color: #000000e8;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: Arial, sans-serif;
+}
+
+#body-pd {
+    background-color: #000000e8;
+}
+
+
+.page {
+    margin-top: 4rem;
+}
+
+
+.card-agendamentos {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.agendamentos {
+    min-width: 38vh;
+    max-width: 38vh; 
+  
+    margin-inline: 1vh;
+    text-align: center;
+    flex: 1 1 40%;
+}
+
+.agenda-item {
+    min-width: 38vh;
+    max-width: 38vh;
+    max-height: 50vh;
+    padding: 3%;
+    /* border: 2px solid #5f2a2a; */
+    border-radius: 2vh;
+    background: #2f2f3d;
+}
+
+/* Estilos para o cabeçalho da agenda (checkbox, título e horário) */
+.agenda-item .agenda-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agenda-item .agenda-checkbox {
+    margin-right: 10px;
+}
+
+.agenda-item .agenda-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.agenda-item .agenda-checkbox label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+/* .agenda-item .agenda-checkbox input[type="checkbox"]:checked + label {
+    background-color: #153063;
+} */
+
+.agenda-item .agenda-content {
+    flex-grow: 1;
+}
+
+.agenda-item .agenda-content .agenda-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.agenda-item .time-schedule {
+    color: #222222;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.agenda-item .description {
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 0 !important;
+}
+
+.agenda-item .alteracoes-conteiner {
+    width: 100%;
+    color: #222222;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 13px;
+}
+
+.alteracoes-conteiner .editar-agendamento {
+    margin-right: 10px; /* Espaço entre os spans */
+}
+
+
+.filter-options {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Cor de fundo do menu */
+    border: 1px solid #6c757d; /* Borda do menu */
+    padding: 10px;
+    margin-top: 1.4rem;
+}
+
+.filter-options.active {
+    display: block; /* Mostra o menu quando a classe 'active' é adicionada */
+}
+
+
+
+.main-container {
+    position: fixed;
+    top: 40%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 40vh; /* Largura do card */
+    height: 42vh; /* Altura do card */
+    background-color: #2b2b2b; /* Cor de fundo escura */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Inicialmente oculto */
+    color: #fff; /* Cor do texto */
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    position: relative;
+}
+
+.calendar-day {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    border: none;
+}
+
+.calendar-day:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    position: relative;
+    font-size: small;
+}
+
+
+.weekdays .day-name {
+    text-align: center;
+    position: relative;
+    border: none;   
+}
+
+.day-details {
+    height: 100%;
+    border: 1px solid #6c757d;
+    color: #333;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    align-self: flex-start;
+    background-color: #4723D9;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+
+.month-year {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.day-number {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.navigation button {
+    border: 0px;
+    padding-top: 10px;
+    background: none;
+    font-weight: 100;
+    color: #fff;
+}
+
+.navigation button:focus {
+    border: 0px;
+    padding-top: 10px;
+} 
+
+#month-year-display {
+    padding-top: 10px;
+}
+
+.selected-day {
+    background-color: #f3542c ; /* Cor para o dia selecionado */
+    color: white;
+    font-weight: 500; /* Fonte em negrito para o dia selecionado */
+}
+
+.current-day {
+    background-color: #4723D9;
+    color: white;
+    font-weight: 500;
+}
+
+
+.description-data {
+    color: #ddd;
+}
+
+.passado .description-data {
+    color: #b57b1e;
+}
+
+.concluido, .passado {
+    text-align: center;
+    margin-inline: 2vh;
+    margin-bottom: 3vh;
+}
+
+.concluido .description-data {
+    color: #59b390;
+}
+
+.card-body p.text-muted {
+    padding-bottom: 20px;
+    color: #a48eff !important;
+    border-bottom: 1px solid  #6c757d;
+}
+
+
+.agenda-item .alteracoes-conteiner .editar-agendamento,
+.agenda-item .alteracoes-conteiner .editar-agendamento a {
+    color: #dddddd !important;
+    background-color: #ada230;
+    border-radius: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.agenda-item .alteracoes-conteiner .cancelar-agendamento,
+.agenda-item .alteracoes-conteiner .cancelar-agendamento a{
+    color: #dddddd !important;
+    background-color: #bc3434;
+    border-radius: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+.alteracoes-conteiner {
+    justify-content: center !important;
+}
+
+
+.fa-regular fa-calendar {
+    align-self: center;
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #211f28;
+    color: #55ab4d;
+    font-weight: 500;
+    font-size: 23px;
+    border: 2px solid grey;
+    padding-top: 0;
+    cursor: pointer;
+    outline: none;
 }
 
 .nav_logo {
@@ -16,16 +488,136 @@ body {
 }
 
 
-.card {
-    display: grid; /* Mantém o display como flexível, mas inline */
-    flex-direction: row;
-    background:  none;
-    border-radius: 10px;
-    /* box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px; */
-    margin-top: 11vh;
-    margin-bottom: 0;
-    max-height: 83vh; /* Defina a altura máxima para 90% da altura da janela de visualização */
-    overflow: hidden; /* Adicione uma barra de rolagem se o conteúdo exceder a altura máxima */
-    justify-content: center;
-    border: none;
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > div.agenda-header > p, #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description-data {
+    font-weight: 500 !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    border: 1px solid #6c757d;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    border-radius: 2vh;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description-data {
+    font-weight: 600 !important;
+}
+
+p.rotulo {
+    font-weight: 600;
+    border-bottom: 0.3vh !important;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.rotulo {
+    margin-bottom: 0px !important;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description {
+    margin-bottom: 0.8rem !important;
+    border: 1px solid #6c757d;
+    border-radius: 2vh;
+}
+
+.mr-4, .mx-4 {
+    margin-right: 0 !important;   
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0 !important;
+    }
+
+    .card {
+        width: 100%;
+    }
+    
+    #body-pd > div.container > div.main_content > div.page > div > div.card-header.d-flex.justify-content-between.align-items-center {
+        margin-top: 1.5vh;
+        margin-bottom: 0.5vh;
+    }
+
+
+    .agenda-item {
+        min-width: 38vh;
+        max-width: 38vh;
+        max-height: 52vh;
+        padding: 3%;
+        background: none;
+        border-radius: 0;
+        border: none;
+        border-radius: 2vh;
+        background: #2f2f3d;
+        margin-inline: 1vh;
+        margin-bottom: 3vh;
+    }
+    
+}
+
+
+@media only screen and (max-width: 410px) {
+    body {
+        font-size: 13px;
+    }
+
+    :root {
+        font-size: 13px;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .usuario-salao {
+        font-size: 12px;
+    }
+
+    .nav {
+        font-size: 10px !important;
+    }
+
+    .nav {
+        margin-left: 10px;
+    }
+
+    #nav-bar > nav > div > div > a > span {
+        margin-left: 10px;
+    }
+
+    span.nav_name, span.nav_logo-name {
+        margin-left: 0.5vh;
+    }
+
+    #nav-bar > nav > div > div > a:nth-child(2) > i {
+        font-size: 13px;
+    }
+
+    .calendar .calendar-day {
+        margin: auto;
+    }
+
+    .weekdays .day-name {
+        margin: auto;
+    }
+
+    .navegation {
+        width: 90%;
+    }
+
+    .mr-4, .mx-4 {
+        font-size: 13px;
+    }
+
+    .current-day {
+        background-color: #4723D9;
+        /* color: white;
+        font-weight: bold; */
+    }
+
+    .main-container {
+        height: 48vh;
+        width: 47vh;
+        padding-left: 0.2vh;
+        font-size: 13px;
+    }
 }

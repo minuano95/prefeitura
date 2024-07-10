@@ -1,0 +1,20 @@
+body = #000000e8
+card = #222029
+
+color = #dddddd
+
+borda
+box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px;
+ou
+1px solid rgb(164, 142, 240);
+
+botoes
+azul = #3088ad
+vermelho = #bc3434
+verde = #55ab4d
+amarelo = #ada230 
+
+
+cores gráfico
+azul = #50A2A7
+vermelho = #9B2915
