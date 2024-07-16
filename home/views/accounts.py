@@ -7,12 +7,8 @@ def login_view(request):
     if request.method == "POST":
         loginForm = LoginForm(request, data=request.POST)
 
-        user = loginForm['username'].value()
-        password = loginForm['password'].value()
-
         if loginForm.is_valid():
             user = loginForm.get_user()
-            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('home:home')

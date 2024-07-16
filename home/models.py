@@ -44,8 +44,10 @@ class Chamado(models.Model):
     funcionario_fechou = models.ForeignKey(Funcionario, on_delete=models.CASCADE, limit_choices_to={'status': True}, related_name='chamados_fechados', blank=True, null=True)
     setor = models.ForeignKey(Setor, on_delete=models.CASCADE, limit_choices_to={'status': True, 'recebe_chamado': True,})
     status = models.BooleanField(default=False)
+    descricao_solucao = models.CharField(max_length=280, default='', blank=True, null=True)
     data_abertura = models.DateTimeField(auto_now_add=True)
     data_fechamento = models.DateTimeField(blank=True, null=True)
+    ativo = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return f'{self.id} - {self.setor} - {self.data_abertura}'

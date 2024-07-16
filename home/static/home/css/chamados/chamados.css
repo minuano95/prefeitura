@@ -70,12 +70,12 @@ body {
 
 #mostrarAgendamentos {
     color: #b57b1e !important;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 #mostrarConcluidos {
     color: #59b390;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-header.d-flex.justify-content-between.align-items-center > span {
@@ -201,12 +201,12 @@ body {
 }
 
 .agenda-item {
-    min-width: 38vh;
-    max-width: 38vh;
-    max-height: 50vh;
-    padding: 3%;
+    min-width: 36vh;
+    max-width: 36vh;
+    max-height: 90vh;
+    padding: 2% 5% 2% 5%;
     /* border: 2px solid #5f2a2a; */
-    border-radius: 2vh;
+    border-radius: 1vh;
     background: #2f2f3d;
 }
 
@@ -255,8 +255,6 @@ body {
 .agenda-item .description {
     text-align: center;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     margin-left: 0 !important;
 }
 
@@ -411,19 +409,26 @@ body {
 .description-data {
     color: #ddd;
 }
-
-.passado .description-data {
-    color: #b57b1e;
-}
-
+    
 .concluido, .passado {
     text-align: center;
-    margin-inline: 2vh;
+    margin-inline: 3vh;
     margin-bottom: 3vh;
 }
 
-.concluido .description-data {
-    color: #59b390;
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentos > .passado {
+    border: 1px solid #b57b1e;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentos > .passado .description-data {
+    color: #b57b1e;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentosConcluidos  > .concluido {
+    border: 1px solid #59b390;
+}
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentosConcluidos  > .concluido .description-data {
+    color:  #59b390;
 }
 
 .card-body p.text-muted {
@@ -444,7 +449,7 @@ body {
     text-decoration: none;
 }
 
-.agenda-item .alteracoes-conteiner .cancelar-agendamento,
+.agenda-item .alteracoes-conteiner .cancelar-agendamento, 
 .agenda-item .alteracoes-conteiner .cancelar-agendamento a{
     color: #dddddd !important;
     background-color: #bc3434;
@@ -453,6 +458,21 @@ body {
     padding-right: 0.5vh;
     font-weight: 500;
     text-decoration: none;
+}
+
+.agenda-item .alteracoes-conteiner .concluir-agendamento, 
+.agenda-item .alteracoes-conteiner .concluir-agendamento a{
+    color: #dddddd !important;
+    background-color: #55ab4d;
+    border-radius: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.concluir-agendamento {
+    margin-right: 10px;
 }
 
 
@@ -487,20 +507,24 @@ body {
     margin-bottom: 2rem;
 }
 
-
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > div.agenda-header > p, #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description-data {
     font-weight: 500 !important;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: clip;
     border: 1px solid #6c757d;
     width: 100%;
     margin-bottom: 0.8rem;
-    border-radius: 2vh;
+    border-radius: 1vh;
 }
 
-#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description-data {
-    font-weight: 600 !important;
+
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > div.agenda-header > p {
+    height: auto !important;
+    max-height: 9vh !important;
+    overflow: auto !important;
+    font-weight: 500 !important;
+    text-overflow: unset !important;
+    white-space: unset !important;
 }
 
 p.rotulo {
@@ -515,12 +539,73 @@ p.rotulo {
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > p.description {
     margin-bottom: 0.8rem !important;
     border: 1px solid #6c757d;
-    border-radius: 2vh;
+    border-radius: 1vh;
 }
 
 .mr-4, .mx-4 {
     margin-right: 0 !important;   
 }
+
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div {
+    background-color: #222029 !important;
+    color: #ddd;
+    font-size: 13px !important;
+}
+
+#swal2-validation-message {
+    background-color: #222029 !important;
+    color: #ddd;
+    font-size: 13px !important;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > label.swal2-input-label {
+    font-weight: 600;
+}
+
+#swal2-textarea {
+    font-size: 13px;
+    border: 1px solid rgb(71 71 71);
+}
+
+div:where(.swal2-container) .swal2-textarea {
+    height: 8.75em;
+}
+
+div:where(.swal2-container) input:where(.swal2-input):focus, div:where(.swal2-container) input:where(.swal2-file):focus, div:where(.swal2-container) textarea:where(.swal2-textarea):focus {
+    border: 1px solid rgb(164, 142, 240);
+    outline: none;
+    box-shadow: none;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-cancel {
+    background-color: #bc3434;
+}
+
+div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) button.swal2-confirm {
+    background-color: #55ab4d;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-hide > div > div.swal2-icon.swal2-success.dark-mode-icon.swal2-icon-show > div.swal2-success-circular-line-left {
+    background-color: #222029 !important;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-icon.swal2-success.dark-mode-icon.swal2-icon-show > div.swal2-success-circular-line-right {
+    background-color: #222029 !important;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-icon.swal2-success.dark-mode-icon.swal2-icon-show > div.swal2-success-fix {
+    background-color: #222029 !important;
+}
+
+#body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-icon.swal2-success.dark-mode-icon.swal2-icon-show > div.swal2-success-circular-line-left {
+    background-color: #222029 !important;
+}
+
+#swal2-title {
+    font-size: 13px;
+}
+
 
 /* Estilos responsivos */
 @media only screen and (max-width: 768px) {
