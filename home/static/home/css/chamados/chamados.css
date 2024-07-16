@@ -412,7 +412,7 @@ body {
     
 .concluido, .passado {
     text-align: center;
-    margin-inline: 3vh;
+    margin-inline: 2vh;
     margin-bottom: 3vh;
 }
 
@@ -515,10 +515,11 @@ body {
     width: 100%;
     margin-bottom: 0.8rem;
     border-radius: 1vh;
+    padding: 1%;
 }
 
 
-#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > div.agenda-header > p {
+#body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div > div > div.agenda-header > p, #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div:nth-child(2) > div > p.description.descricao_solucao {
     height: auto !important;
     max-height: 9vh !important;
     overflow: auto !important;
