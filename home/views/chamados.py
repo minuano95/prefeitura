@@ -12,12 +12,12 @@ def chamados_view(request):
 
     if nivel_usuario == 'funcionario':
         chamados = Chamado.objects.filter(
-            Q(funcionario_abriu=funcionario_usuario) | 
+            Q(funcionario_abriu=funcionario_usuario) & Q(ativo=True) | 
             Q(setor=setor_usuario) & Q(ativo=True)
         ).order_by('-data_abertura')
     elif nivel_usuario == 'adm':
         chamados = Chamado.objects.filter(
-            Q(funcionario_abriu__setor=setor_usuario) | 
+            Q(funcionario_abriu__setor=setor_usuario) & Q(ativo=True) | 
             Q(setor=setor_usuario) & Q(ativo=True)
         ).order_by('-data_abertura')
     else:

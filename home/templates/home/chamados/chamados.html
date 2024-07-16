@@ -68,7 +68,7 @@
 										{% endif %}
 
 										<div class="alteracoes-conteiner">
-											{% if agendamento.funcionario_abriu == funcionario_usuario %}
+											{% if agendamento.funcionario_abriu == funcionario_usuario or agendamento.setor == funcionario_usuario.setor and funcionario_usuario.nivel == 'adm' or funcionario_usuario.nivel == 'adm_sistema' %}
 												<span class="editar-agendamento" data-agendamento-id="{{ agendamento.id }}"> 
 													<a href="{% url 'home:edita_chamado' agendamento.id %}">Editar</a>
 												</span>
