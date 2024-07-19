@@ -15,91 +15,94 @@
 
 {% block content %}
 <div class="container">
-	<div class="page">
-		<div class="card">
-			<div class="card-body">
-				<div class="card">        
-					<div class="card-header d-flex justify-content-between align-items-center">
-						<span class="float-right">
-							<span class="mr-4 navTask" id="mostrarAgendamentos">Em aberto</span> |
-							<span class="mr-4 navTask" id="mostrarConcluidos">Concluídos</span>
-						</span>
-					</div>
+<div class="page">
+<div class="card">
+<div class="card-body">
+<div class="card">        
+	<div class="card-header d-flex justify-content-between align-items-center">
+		<span class="float-right">
+			<span class="mr-4 navTask" id="mostrarAgendamentos">Em aberto</span> |
+			<span class="mr-4 navTask" id="mostrarConcluidos">Concluídos</span>
+		</span>
+	</div>
 
-					<div class="card-agendamentos">
-						{% if agendamentos %}
-							{% for agendamento in agendamentos %}
-								<div class="{% if agendamento.status %} agendamentosConcluidos {% else %} agendamentos {% endif %}" style="{% if agendamento.status %} display: none {% endif %}">
-									<div class="agenda-item" data-agendamento-data="{{ agendamento.status }}" data-agendamento-concluido="{{ agendamento.status }}">
-										<p class="rotulo">Descrição</p>
-										<div class="agenda-header">
-											<p>{{ agendamento.descricao }}</p>
-										</div>
+	<div class="card-agendamentos">
+		{% if agendamentos %}
+			{% for agendamento in agendamentos %}
+				<div class="{% if agendamento.status %} agendamentosConcluidos {% else %} agendamentos {% endif %}" style="{% if agendamento.status %} display: none {% endif %}">
+					<div class="agenda-item" data-agendamento-data="{{ agendamento.status }}" data-agendamento-concluido="{{ agendamento.status }}">
+						<p class="rotulo">Descrição</p>
+						<div class="agenda-header">
+							<p>{{ agendamento.descricao }}</p>
+						</div>
 
-										<p class="rotulo">Abriu Chamado</p>
-										<p class="description">{{ agendamento.funcionario_abriu.nome }}</p>
-										
-										<p class="rotulo">Setor Abriu Chamado</p>
-										<p class="description">{{ agendamento.funcionario_abriu.setor }}</p>
+						<p class="rotulo">Abriu Chamado</p>
+						<p class="description">{{ agendamento.funcionario_abriu.nome }}</p>
+						
+						<p class="rotulo">Setor Abriu Chamado</p>
+						<p class="description">{{ agendamento.funcionario_abriu.setor }}</p>
 
-										<p class="rotulo">Setor do Chamado</p>
-										<p class="description">{{ agendamento.setor.nome }} | {{ agendamento.funcionario_abriu.area_setor }}</p>
-										
-										{% if agendamento.status %}
-											<p class="rotulo">Fechou Chamado</p>
-											<p class="description">{{ agendamento.funcionario_fechou.nome }}</p>
-										{% endif %}
-
-										{% if agendamento.status %}
-											<p class="rotulo">Serviço Prestado</p>
-											{% if agendamento.descricao_solucao is not None %}
-												<p class="description descricao_solucao">{{ agendamento.descricao_solucao }}</p>
-											{% else %}
-												<p class="description"></p>
-											{% endif %}
-										{% endif %}
-		
-										<p class="rotulo">Data de Abertura</p>
-										<p class="description-data">{{ agendamento.data_abertura|date:"d/m/Y" }} {{ agendamento.data_abertura|time:"H:i" }}</p>
-
-										{% if agendamento.status %}
-											<p class="rotulo">Data de Fechamento</p>
-											<p class="description-data">{{ agendamento.data_fechamento|date:"d/m/Y" }} {{ agendamento.data_fechamento|time:"H:i" }}</p>
-										{% endif %}
-
-										<div class="alteracoes-conteiner">
-											{% if agendamento.funcionario_abriu == funcionario_usuario or agendamento.setor == funcionario_usuario.setor and funcionario_usuario.nivel == 'adm' or funcionario_usuario.nivel == 'adm_sistema' %}
-												<span class="editar-agendamento" data-agendamento-id="{{ agendamento.id }}"> 
-													<a href="{% url 'home:edita_chamado' agendamento.id %}">Editar</a>
-												</span>
-											{% endif %}
-											{% if agendamento.setor == setor_usuario and not agendamento.status %}
-												<span class="concluir-agendamento" data-agendamento-id="{{ agendamento.id }}">
-													<a href="#" onclick="concluirChamado('{{ agendamento.id }}')">Concluir</a>
-												</span>
-											{% endif %}
-											{% if agendamento.setor == setor_usuario and agendamento.status or funcionario_usuario.nivel == 'adm_sistema' %}
-												<span class="concluir-agendamento" data-agendamento-id="{{ agendamento.id }}">
-													<a href="#" onclick="concluirChamado('{{ agendamento.id }}')">Reabrir</a>
-												</span>
-											{% endif %}
-											{% if agendamento.funcionario_abriu.id == funcionario_usuario.id or funcionario_usuario.nivel == 'adm_sistema' %}
-												<span class="cancelar-agendamento">
-													<a href="{% url 'home:deleta_chamado' agendamento.id %}">Excluir</a>
-												</span>
-											{% endif %}
-										</div>
-									</div> 
-								</div> 
-							{% endfor %}
-						{% else %}
-							<p>Não há agendamentos.</p>
+						<p class="rotulo">Setor do Chamado</p>
+						<p class="description">{{ agendamento.setor.nome }} | {{ agendamento.funcionario_abriu.area_setor }}</p>
+						
+						{% if agendamento.status %}
+							<p class="rotulo">Fechou Chamado</p>
+							<p class="description">{{ agendamento.funcionario_fechou.nome }}</p>
 						{% endif %}
-					</div>
+
+						{% if agendamento.status %}
+							<p class="rotulo">Serviço Prestado</p>
+							{% if agendamento.descricao_solucao is not None %}
+								<p class="description descricao_solucao">{{ agendamento.descricao_solucao }}</p>
+							{% else %}
+								<p class="description"></p>
+							{% endif %}
+						{% endif %}
+
+						<p class="rotulo">Data de Abertura</p>
+						<p class="description-data">{{ agendamento.data_abertura|date:"d/m/Y" }} {{ agendamento.data_abertura|time:"H:i" }}</p>
+
+						{% if agendamento.status %}
+							<p class="rotulo">Data de Fechamento</p>
+							<p class="description-data">{{ agendamento.data_fechamento|date:"d/m/Y" }} {{ agendamento.data_fechamento|time:"H:i" }}</p>
+						{% endif %}
+						
+						<div class="alteracoes-conteiner">
+							{% if agendamento.funcionario_abriu == funcionario_usuario or agendamento.funcionario_abriu.setor == funcionario_usuario.setor and funcionario_usuario.nivel != 'funcionario' or funcionario_usuario.nivel == 'adm_sistema' %}
+								<span class="editar-agendamento" data-agendamento-id="{{ agendamento.id }}"> 
+									<a href="{% url 'home:edita_chamado' agendamento.id %}">Editar</a>
+								</span>
+							{% endif %}
+
+							{% if agendamento.funcionario_abriu == funcionario_usuario or funcionario_usuario.setor == agendamento.funcionario_abriu.setor and funcionario_usuario.nivel != 'funcionario' or funcionario_usuario.nivel == 'adm_sistema' %}
+								<span class="cancelar-agendamento">
+									<a href="#" onclick="excluirChamado('{{agendamento.id}}')">Excluir</a>
+								</span>
+							{% endif %}
+
+							{% if agendamento.setor == funcionario_usuario.setor and not agendamento.status or funcionario_usuario.nivel == 'adm_sistema' and not agendamento.status %}
+								<span class="concluir-agendamento" data-agendamento-id="{{ agendamento.id }}">
+									<a href="#" onclick="concluirChamado('{{ agendamento.id }}')">Concluir</a>
+								</span>
+							{% endif %}
+
+							{% if agendamento.setor == funcionario_usuario.setor and agendamento.status or funcionario_usuario.nivel == 'adm_sistema' and agendamento.status%}
+								<span class="reabrir-agendamento" data-agendamento-id="{{ agendamento.id }}">
+									<a href="#" onclick="reabrirChamado('{{ agendamento.id }}')">Reabrir</a>
+								</span>
+							{% endif %}
+						</div>
+					</div> 
 				</div> 
-			</div>
-        </div>
-    </div>
+			{% endfor %}
+		{% else %}
+			<p>Não há agendamentos.</p>
+		{% endif %}
+	</div>
+</div> 
+</div>
+</div>
+</div>
 </div>
 
 <script>
@@ -130,6 +133,57 @@
         processarAgendaItems();
     });
 
+	function reabrirChamado(chamadoId) {
+		Swal.fire({
+			title: 'Tem certeza?',
+			text: "Você quer reabrir este chamado?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Sim',
+			cancelButtonText: 'Cancelar',
+			customClass: {
+				popup: 'dark-mode-popup',
+				title: 'dark-mode-title',
+				icon: 'dark-mode-icon',
+				confirmButton: 'dark-mode-confirm-button',
+				cancelButton: 'dark-mode-cancel-button'
+			}
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$.ajax({
+					type: "POST",
+					url: "/chamado/reabrir_chamado/0/".replace('0', chamadoId),
+					data: {
+						'csrfmiddlewaretoken': '{{ csrf_token }}'
+					},
+					success: function() {
+						Swal.fire({
+							title: 'Chamado reaberto!',
+							icon: 'success',
+							timer: 1000,
+							showConfirmButton: false,
+							customClass: {
+								popup: 'dark-mode-popup',
+								title: 'dark-mode-title',
+								icon: 'dark-mode-icon',
+								confirmButton: 'dark-mode-confirm-button'
+							}
+						}).then(() => {
+							location.reload();
+						});
+					},
+					error: function() {
+						Swal.fire({
+							title: 'Erro!',
+							text: 'Não foi possível reabrir o chamado.',
+							icon: 'error'
+						});
+					}
+				});
+			}
+		});
+	}	
+
     function concluirChamado(chamadoId) {
 		Swal.fire({
 			input: 'textarea',
@@ -158,7 +212,7 @@
 						Swal.fire({
 							title: 'Chamado concluído!',
 							icon: 'success',
-							timer: 2000,
+							timer: 1000,
 							showConfirmButton: false,
 							customClass: {
 								popup: 'dark-mode-popup',
@@ -174,6 +228,57 @@
 						Swal.fire({
 							title: 'Erro!',
 							text: 'Não foi possível concluir o chamado.',
+							icon: 'error'
+						});
+					}
+				});
+			}
+		});
+	}
+
+	function excluirChamado(chamadoId) {
+		Swal.fire({
+			title: 'Tem certeza?',
+			text: "Você quer excluir este chamado? Esta ação não pode ser desfeita.",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Sim, excluir!',
+			cancelButtonText: 'Cancelar',
+			customClass: {
+				popup: 'dark-mode-popup',
+				title: 'dark-mode-title',
+				icon: 'dark-mode-icon',
+				confirmButton: 'dark-mode-confirm-button',
+				cancelButton: 'dark-mode-cancel-button'
+			}
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$.ajax({
+					type: "POST",
+					url: "/chamado/deleta_chamado/0/".replace('0', chamadoId),
+					data: {
+						'csrfmiddlewaretoken': '{{ csrf_token }}'
+					},
+					success: function() {
+						Swal.fire({
+							title: 'Chamado excluído!',
+							icon: 'success',
+							timer: 1000,
+							showConfirmButton: false,
+							customClass: {
+								popup: 'dark-mode-popup',
+								title: 'dark-mode-title',
+								icon: 'dark-mode-icon',
+								confirmButton: 'dark-mode-confirm-button'
+							}
+						}).then(() => {
+							location.reload();
+						});
+					},
+					error: function() {
+						Swal.fire({
+							title: 'Erro!',
+							text: 'Não foi possível excluir o chamado.',
 							icon: 'error'
 						});
 					}

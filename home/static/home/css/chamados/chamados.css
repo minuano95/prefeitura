@@ -266,7 +266,7 @@ body {
     margin-bottom: 13px;
 }
 
-.alteracoes-conteiner .editar-agendamento {
+.alteracoes-conteiner .editar-agendamento, .alteracoes-conteiner .cancelar-agendamento {
     margin-right: 10px; /* Espaço entre os spans */
 }
 
@@ -300,111 +300,6 @@ body {
     display: none; /* Inicialmente oculto */
     color: #fff; /* Cor do texto */
 }
-
-.calendar-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    position: relative;
-}
-
-.calendar-day {
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    border: none;
-}
-
-.calendar-day:hover {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    position: relative;
-    font-size: small;
-}
-
-
-.weekdays .day-name {
-    text-align: center;
-    position: relative;
-    border: none;   
-}
-
-.day-details {
-    height: 100%;
-    border: 1px solid #6c757d;
-    color: #333;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    align-self: flex-start;
-    background-color: #4723D9;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 18px;
-    color: white;
-}
-
-
-.month-year {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.day-number {
-    font-size: 32px;
-    font-weight: 500;
-    margin: 0;
-}
-
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.navigation button {
-    border: 0px;
-    padding-top: 10px;
-    background: none;
-    font-weight: 100;
-    color: #fff;
-}
-
-.navigation button:focus {
-    border: 0px;
-    padding-top: 10px;
-} 
-
-#month-year-display {
-    padding-top: 10px;
-}
-
-.selected-day {
-    background-color: #f3542c ; /* Cor para o dia selecionado */
-    color: white;
-    font-weight: 500; /* Fonte em negrito para o dia selecionado */
-}
-
-.current-day {
-    background-color: #4723D9;
-    color: white;
-    font-weight: 500;
-}
-
 
 .description-data {
     color: #ddd;
@@ -440,7 +335,7 @@ body {
 
 .agenda-item .alteracoes-conteiner .editar-agendamento,
 .agenda-item .alteracoes-conteiner .editar-agendamento a {
-    color: #dddddd !important;
+    color: #fff !important;
     background-color: #ada230;
     border-radius: 1vh;
     padding-left: 0.5vh;
@@ -451,8 +346,19 @@ body {
 
 .agenda-item .alteracoes-conteiner .cancelar-agendamento, 
 .agenda-item .alteracoes-conteiner .cancelar-agendamento a{
-    color: #dddddd !important;
+    color: #fff !important;
     background-color: #bc3434;
+    border-radius: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.agenda-item .alteracoes-conteiner .reabrir-agendamento, 
+.agenda-item .alteracoes-conteiner .reabrir-agendamento a{
+    color: #fff !important;
+    background-color: #3088ad;
     border-radius: 1vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
@@ -462,7 +368,7 @@ body {
 
 .agenda-item .alteracoes-conteiner .concluir-agendamento, 
 .agenda-item .alteracoes-conteiner .concluir-agendamento a{
-    color: #dddddd !important;
+    color: #fff !important;
     background-color: #55ab4d;
     border-radius: 1vh;
     padding-left: 0.5vh;
@@ -475,14 +381,8 @@ body {
     margin-right: 10px;
 }
 
-
 .alteracoes-conteiner {
     justify-content: center !important;
-}
-
-
-.fa-regular fa-calendar {
-    align-self: center;
 }
 
 .fixed-button {
@@ -607,6 +507,14 @@ div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) button
     font-size: 13px;
 }
 
+.swal2-popup *:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.swal2-popup {
+    font-size: 13px;
+}
 
 /* Estilos responsivos */
 @media only screen and (max-width: 768px) {
@@ -627,7 +535,7 @@ div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) button
     .agenda-item {
         min-width: 38vh;
         max-width: 38vh;
-        max-height: 52vh;
+        max-height: 90vh;
         padding: 3%;
         background: none;
         border-radius: 0;

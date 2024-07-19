@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from ..models import Chamado
+from ..forms import ChamadoForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
@@ -43,9 +44,33 @@ def concluir_chamado(request, chamado_id):
     return redirect('home:chamados_view')
 
 @login_required(login_url='/login/')
+def reabrir_chamado(request, chamado_id):
+    if request.method == 'POST':
+        # descricao = request.POST.get('descricao')
+        chamado = get_object_or_404(Chamado, id=chamado_id)
+        chamado.status = False
+        chamado.descricao_solucao = ''
+        chamado.funcionario_fechou = None
+        chamado.data_fechamento = None
+        chamado.save()
+    return redirect('home:chamados_view')
+
+@login_required(login_url='/login/')
 def edita_chamado(request, chamado_id):
-    return redirect('home:home')
+    chamado = get_object_or_404(Chamado, pk=chamado_id)
+    if request.method == "POST":
+        form = ChamadoForm(request.POST, instance=chamado)
+        if form.is_valid():
+            form.save()
+            return redirect('home:lista_chamados')
+    else:
+        form = ChamadoForm(instance=chamado)
+    return render(request, 'home/chamados/editar_chamado.html', {'form': form, 'chamado': chamado})
 
 @login_required(login_url='/login/')
 def deleta_chamado(request, chamado_id):
-    return redirect('home:chamados')
+    if request.method == 'POST':
+        chamado = get_object_or_404(Chamado, id=chamado_id)
+        chamado.ativo = False
+        chamado.save()
+    return redirect('home:chamados_view')

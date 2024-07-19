@@ -1,0 +1,284 @@
+body {
+    /* background-color: ; */
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: Arial, sans-serif;
+}
+
+#body-pd {
+    background-image: radial-gradient(ellipse at right, #4da6bd, #a097a7);
+}
+
+#body-pd {
+    background-color: #000000e8;
+}
+
+.titulo {
+    font-size: 2vh; /* Tamanho do texto responsivo em relação à largura da tela */
+    max-width: 600px; /* Tamanho máximo do texto para evitar que fique muito grande */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.card {
+    /* width: 90%; */
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #222029 !important;
+    color: #dddddd !important;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 3.5rem;
+    width: 50%;
+    font-size: 13px !important;
+}
+
+form {
+    padding: 20px;
+    background: none;
+    border-radius: 1vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+
+
+form input[type="checkbox"] {
+    margin-bottom: 1vh;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"],
+form select,
+form input[type="number"],
+form input[type="datetime-local"],
+form button {
+    width: 70%;
+    height: 4vh !important;
+    /* padding: 10px; */
+    margin-bottom: 0.8vh;
+    border-radius: 1vh;
+    font-size: 13px;
+    background: none;
+    color: #dddddd;
+    height: 2vh;
+    text-align: center;
+    border: 1px solid #6c757d;
+}
+
+form textarea {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 0.8vh;
+    border-radius: 1vh;
+    font-size: 13px;
+    background: none;
+    color: #dddddd;
+    text-align: center;
+    background-color: #222029;
+    border: 1px solid #6c757d;
+}
+
+
+form select {
+    background-color: #222029;
+}
+
+
+.fecharForm {
+    height: 2vh;
+    background-color: #bc3434;
+    color: #ddd;
+    padding: 0 !important;
+}
+
+.fecharForm:hover {
+    background-color: #a10e0e;
+}
+
+.button-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-top: 1.5vh; /* Espaçamento entre os botões */
+}
+
+#body-pd > div.container > div.main_content > div > form > div > button {
+    height: 3vh !important;
+}
+
+.bx {
+    font-size: 15px;
+}
+
+.nav_logo {
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+
+
+/* Adicione estilos para os botões conforme necessário */
+.adiciona,
+.cancela,
+.edita,
+.exclui {
+    padding: 8px 16px; /* Tamanho dos botões */
+    border: none;
+    border-radius: 5px;
+    font-size: 13px; /* Tamanho da fonte */
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilos específicos para o botão "Adicionar" */
+.adiciona {
+    height: 2vh;
+    background-color: #55ab4d;
+    color: #fff;
+    padding: 0 !important;
+}
+
+.exclui {
+    height: 2vh;
+    background-color: #3088ad;
+    color: #fff;
+    padding: 0 !important;
+}
+
+.edita {
+    height: 2vh;
+    background-color: #ada230;
+    color: #fff;
+    padding: 0 !important;
+}
+
+/* Estilos específicos para o botão "Cancelar" */
+.cancela {
+    height: 2vh;
+    background-color: #bc3434;
+    color: #fff;
+    padding: 0 !important;
+}
+
+/* Efeito de hover para os botões */
+.adiciona:hover,
+.edita:hover,
+.exclui:hover,
+.cancela:hover {
+    filter: brightness(0.9); /* Ajuste a opacidade dos botões ao passar o mouse */
+}
+
+.errorlist {
+    /* Estilos para a lista de erros que não pertencem a um campo específico */
+    color: #ff0000; /* Define a cor do texto para vermelho */
+    font-size: 13px; /* Define o tamanho da fonte para 14 pixels */
+    /* Adicione outros estilos conforme necessário */
+}
+
+#body-pd > div.container > div.main_content > div > form > div:nth-child(9) > label {
+    display: block;
+}
+
+#body-pd > div.container > div.main_content > div > form > p > label {
+    display: block;
+}
+
+select {
+    font-size: 13px;
+}
+
+#body-pd > div.container > div.main_content > div > form > p {
+    margin-bottom: 1px;
+}
+
+#id_servicos {
+    display: flex;
+    border: 1px solid #6c757d;
+    border-radius: 1vh;
+    padding: 5px;
+    flex-wrap: wrap;
+    max-height: 27vh;
+    overflow: auto; /* Use auto para mostrar a barra de rolagem apenas quando necessário */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura e altura total */
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6px;
+}
+
+
+#id_servicos > div {
+    min-width: max-content;
+    padding: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=checkbox] {
+    display: block;
+    margin: auto;
+}
+
+
+/* Estilos responsivos */
+@media only screen and (max-width: 600px) {
+    .card {
+        font-size: 11px;
+        width: 90%;
+    }
+
+    .time {
+        font-size: 6px;
+    }
+
+    #body-pd > div.container > div.main_content > div > form > div > button {
+        height: 3vh !important;
+    }
+
+    form input[type="text"],
+    form textarea,
+    form select,
+    form input[type="number"],
+    form input[type="datetime-local"],
+    form button {
+        width: calc(100% - 20px);
+        padding: 5px;
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+
+    #body-pd > div.container > div.main_content > div > form > p > label {
+        padding-bottom: 0;
+        margin-bottom: .5rem;
+    }
+
+    #body-pd > div.container > div.main_content > div > form > p > input {
+        width: calc(100% - 20px);
+        padding: 5px;
+        margin-bottom: 5px !important;
+        font-size: 12px;
+    }
+
+    #body-pd > div.container > div.main_content > div > form > p {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    #id_servicos > div > label {
+        margin-bottom: 0px;
+    }
+
+    #id_servicos {
+        width: 90%;
+        font-size: 11px !important;
+    }
+
+    #body-pd > div.container > div.main_content > div > form > div:nth-child(3) > fieldset > legend {
+        font-size: 13px !important;
+    }
+}

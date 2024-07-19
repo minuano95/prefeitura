@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_name %}Editar Chamado{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'home/css/chamados/editar_chamado.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function redirecionarParaPagina() {
+        window.location.href = '/salao/agenda/';
+    }
+</script>
+
+<script>
+    function redirecionarParaPaginaExcluir(agendamento_id) {
+         window.location.href = '/chamado/deleta_agendamento/' + agendamento_id + '/';
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <form action="{% url 'home:edita_chamado' chamado.id %}" method="POST">
+        {% csrf_token %}
+        <h1 class="titulo">Chamado</h1>
+        <p>
+            <label>Descrição</label>
+            {{ form.descricao }}
+        </p>
+        <p>
+            <label>Funcionário que Abriu</label>
+            {{ form.funcionario_abriu }}
+        </p>
+        <p>
+            <label>Funcionário que Fechou</label>
+            {{ form.funcionario_fechou }}
+        </p>
+        <p>
+            <label>Setor Chamado</label>
+            {{ form.setor }}
+        </p>
+        <p>
+            <label>Descrição da Solução</label>
+            {{ form.descricao_solucao }}
+        </p>
+        <p>
+            <label>Data de Abertura</label>
+            {{ form.data_abertura_display }}
+        </p>
+        <p>
+            <label>Data de Fechamento</label>
+            {{ form.data_fechamento }}
+        </p>
+        <p>
+            <label>Status</label>
+            {{ form.status }}
+        </p>
+        <div class="button-container">
+            <button type="button" class="exclui" onclick="redirecionarParaPagina();">Cancelar</button>
+            <button type="submit" class="edita">Editar</button>
+            <button type="button" class="cancela" onclick="redirecionarParaPaginaExcluir({{ chamado.id }});">Excluir</button>
+        </div>
+    </form>
+    
+    
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $('#id_total').val({{agendamento.preco_total}});
+        console.log({{agendamento.preco_total}})
+    
+        function toggleClienteFields() {
+            if ($('#id_concluido').is(':checked')) {
+                $('#id_cliente_nome').closest('p').hide();
+                $('#id_cliente_telefone').closest('p').hide();
+                $('#id_cliente_mensagem').closest('p').hide();
+            } else {
+                $('#id_cliente_nome').closest('p').show();
+                $('#id_cliente_telefone').closest('p').show();
+                $('#id_cliente_mensagem').closest('p').show();
+            }
+        };
+
+        toggleClienteFields()
+    });
+</script>  
+{%endblock%}
