@@ -11,13 +11,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     function redirecionarParaPagina() {
-        window.location.href = '/salao/agenda/';
+        window.location.href = '/chamados/';
     }
 </script>
 
 <script>
     function redirecionarParaPaginaExcluir(agendamento_id) {
-         window.location.href = '/chamado/deleta_agendamento/' + agendamento_id + '/';
+         window.location.href = '/chamado/deleta_chamado/' + agendamento_id + '/';
     }
 </script>
 {% endblock %}
@@ -65,28 +65,12 @@
             <button type="button" class="cancela" onclick="redirecionarParaPaginaExcluir({{ chamado.id }});">Excluir</button>
         </div>
     </form>
-    
-    
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        $('#id_total').val({{agendamento.preco_total}});
-        console.log({{agendamento.preco_total}})
-    
-        function toggleClienteFields() {
-            if ($('#id_concluido').is(':checked')) {
-                $('#id_cliente_nome').closest('p').hide();
-                $('#id_cliente_telefone').closest('p').hide();
-                $('#id_cliente_mensagem').closest('p').hide();
-            } else {
-                $('#id_cliente_nome').closest('p').show();
-                $('#id_cliente_telefone').closest('p').show();
-                $('#id_cliente_mensagem').closest('p').show();
-            }
-        };
-
-        toggleClienteFields()
+        document.getElementById('id_descricao_solucao').disabled = true;
+        document.querySelector('[name="setor"]').disabled = true;
     });
-</script>  
-{%endblock%}
+</script>
+{% endblock %}

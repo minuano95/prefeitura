@@ -57,6 +57,7 @@ def reabrir_chamado(request, chamado_id):
 
 @login_required(login_url='/login/')
 def edita_chamado(request, chamado_id):
+    funcionario_usuario = request.user.perfil.funcionario
     chamado = get_object_or_404(Chamado, pk=chamado_id)
     if request.method == "POST":
         form = ChamadoForm(request.POST, instance=chamado)
@@ -65,7 +66,10 @@ def edita_chamado(request, chamado_id):
             return redirect('home:lista_chamados')
     else:
         form = ChamadoForm(instance=chamado)
-    return render(request, 'home/chamados/editar_chamado.html', {'form': form, 'chamado': chamado})
+        permissao_alterar = False
+        if chamado.funcionario_abriu == funcionario_usuario or chamado.funcionario_abriu.setor == funcionario_usuario.setor and funcionario_usuario.nivel != 'funcionario' or funcionario_usuario.nivel == 'adm_sistema':
+            permissao_alterar = True
+    return render(request, 'home/chamados/editar_chamado.html', {'form': form, 'chamado': chamado, 'permissao': permissao_alterar})
 
 @login_required(login_url='/login/')
 def deleta_chamado(request, chamado_id):
