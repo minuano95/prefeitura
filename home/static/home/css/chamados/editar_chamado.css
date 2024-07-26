@@ -224,6 +224,9 @@ input[type=checkbox] {
     margin: auto;
 }
 
+#id_data_fechamento {
+    height: 4vh !important;
+}
 
 /* Estilos responsivos */
 @media only screen and (max-width: 600px) {

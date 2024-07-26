@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from ..models import Chamado
 from ..forms import ChamadoForm
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
@@ -59,17 +60,19 @@ def reabrir_chamado(request, chamado_id):
 def edita_chamado(request, chamado_id):
     funcionario_usuario = request.user.perfil.funcionario
     chamado = get_object_or_404(Chamado, pk=chamado_id)
+    print(funcionario_usuario)
+    print(chamado)
     if request.method == "POST":
         form = ChamadoForm(request.POST, instance=chamado)
         if form.is_valid():
             form.save()
-            return redirect('home:lista_chamados')
+            return redirect('home:chamados_view')
     else:
         form = ChamadoForm(instance=chamado)
-        permissao_alterar = False
         if chamado.funcionario_abriu == funcionario_usuario or chamado.funcionario_abriu.setor == funcionario_usuario.setor and funcionario_usuario.nivel != 'funcionario' or funcionario_usuario.nivel == 'adm_sistema':
-            permissao_alterar = True
-    return render(request, 'home/chamados/editar_chamado.html', {'form': form, 'chamado': chamado, 'permissao': permissao_alterar})
+            return render(request, 'home/chamados/editar_chamado.html', {'form': form, 'chamado': chamado, 'nivel_usuario': funcionario_usuario.nivel})
+        else:
+            raise PermissionDenied
 
 @login_required(login_url='/login/')
 def deleta_chamado(request, chamado_id):

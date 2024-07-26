@@ -53,7 +53,7 @@
         </p>
         <p>
             <label>Data de Fechamento</label>
-            {{ form.data_fechamento }}
+            {{ form.data_fechamento_display }}
         </p>
         <p>
             <label>Status</label>
@@ -70,7 +70,20 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('id_descricao_solucao').disabled = true;
-        document.querySelector('[name="setor"]').disabled = true;
+        document.getElementById('id_status').disabled = true;
+        document.getElementById('id_funcionario_fechou').disabled = true;
+        document.getElementById('id_funcionario_abriu').disabled = true;
+
+        if ('{{nivel_usuario}}' === 'adm_sistema') {
+            document.getElementById('id_descricao_solucao').disabled = false;
+            document.getElementById('id_status').disabled = false;
+            document.getElementById('id_funcionario_fechou').disabled = false;
+            document.getElementById('id_funcionario_abriu').disabled = false;
+        }
+
+        if ('{{nivel_usuario}}' === 'adm') {
+            document.getElementById('id_funcionario_abriu').disabled = false;
+        }
     });
 </script>
 {% endblock %}
