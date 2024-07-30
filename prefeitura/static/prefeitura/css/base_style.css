@@ -193,6 +193,10 @@ body {
     font-weight: 500;
 }
 
+.bx {
+    font-size: 13px !important;
+}
+
 
 @media (min-width: 1200px) {
     .container {

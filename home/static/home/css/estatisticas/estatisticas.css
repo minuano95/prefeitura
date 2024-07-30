@@ -1,0 +1,483 @@
+.container {
+    margin-top: 4.9vh !important;
+}
+    
+
+body {
+    background: radial-gradient(ellipse at right, #4da6bd, #a097a7);;
+    color: #dddddd !important;
+}
+
+.card {
+    margin-bottom: 24px;
+    /* box-shadow: 0 0 0.875rem 0 rgba(33,37,41,.05); */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #222029;
+    color: #dddddd;
+    background-clip: initial;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    height: max-content;
+    font-size: 13px !important;
+}
+
+.mb-0, .my-0 {
+    font-size: 15px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.card-header:first-child {
+    border-radius: .25rem .25rem 0 0;
+    display: flex;
+}
+.card-header {
+    border-bottom-width: 1px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    /* background-color: #fff; */
+    border-bottom: 0 solid transparent;
+}
+
+.altera-financeiro {
+    margin-left: auto;
+    display: flex;
+    margin-right: 0.5rem;
+}
+
+.altera-financeiro .suprimento {
+    margin-right: 1rem;
+}
+
+thead {
+    border-bottom: rgb(141, 138, 150) 1px solid !important;
+}
+
+
+th {
+    border-top: 0px;
+}
+
+thead {
+    border-top: none;
+}
+
+tr {
+    color: #dddddd !important;
+}
+
+.table {
+    margin-top: 2rem;
+    color: #dddddd !important;
+    border-top: none !important;
+    border-bottom: rgb(141, 138, 150) 1px solid !important;
+    
+}
+
+.table tr td {
+    padding: 0.75rem !important;
+    border-top: rgb(141, 138, 150) 1px solid !important;
+}
+
+.table thead th {
+    border-top: none;
+    border-bottom: rgb(141, 138, 150) 1px solid !important;
+}
+
+.table tr {
+    border-top: none;
+}
+
+
+.card-financeiro {
+    display: none;
+}
+
+.analisar-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    text-align: inherit;
+    text-decoration: none;
+    outline: none;
+    color: #36A2EB;
+}
+
+#myChart {
+    max-height: 22rem;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div.card-body > table > tbody > tr > td.editar-funcionario > a {
+    background-color:#3088ad !important;
+    font-weight: 500;
+    color: #dddddd;
+    padding-left: 0.6vh;
+    padding-right: 0.6vh;
+    border-radius: 0.8vh;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div.card-body > table > tbody > tr > td.editar-funcionario > a:hover {
+    text-decoration: none;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div.card-body > table > tbody > tr, td {
+    background: none;
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #211f28;
+    color: #55ab4d;
+    font-weight: 600;
+    font-size: 23px;
+    border: 2px solid grey;
+    padding-top: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown-menu-custom {
+    position: fixed;
+    bottom: 70px; /* Adjust based on the height of the button */
+    right: 20px;
+    display: none; /* Initially hidden */
+    background-color: #222029;
+    box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px;
+    margin-bottom: 1vh;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 1040; /* Abaixo do modal, que geralmente está em 1050 */
+}
+
+#body-pd > div.container > div.main_content > div.dropdown > div > a {
+    color: #ddd;
+}
+
+#body-pd > div.container > div.main_content > div.dropdown > div > a:hover {
+    background: #2d283f;
+}
+
+#body-pd > div.container > div.main_content > div.dropdown > div > a:active {
+    background: none;
+}
+
+#body-pd > div.container > div.main_content > div.dropdown > div > a:focus {
+    background: none;
+}
+
+#body-pd > div.container > div.main_content > div.dropdown > div {
+    border-bottom: 1px grey;
+}
+
+.form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 20px;
+    width: 45vh;
+    max-width: 500px;
+    justify-content: center;
+    background-color: #222029;
+    box-shadow: rgb(164, 142, 240) 0px 0px 5px 1px;
+    margin-top: 2vh;
+}
+
+
+form {
+    border-radius: 5px;
+    color: #dddddd;
+}
+
+.form input {
+    display: block;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"],
+form select,
+form input[type="number"],
+form button {
+    border: 1px solid #6c757d !important;
+    padding: 5px;
+    margin-bottom: 1vh;
+    text-align: center !important;
+}
+
+
+
+.form-group {
+    margin-top: 1.2vh;
+    margin-bottom: 2.8vh;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"],
+form select,
+form input[type="number"] {
+    width: 100%;
+    height: 4vh !important;
+    /* padding: 10px; */
+    margin-bottom: 0.8vh;
+    border-radius: 1vh;
+    font-size: 13px;
+    background: none;
+    color: #dddddd;
+    height: 3vh;
+    text-align: center;
+    border: 1px solid #6c757d !important;
+}
+
+
+form select {
+    background-color: #222029;
+}
+
+
+.button-container {
+    display: flex;
+    padding-inline: 5vh;
+}
+
+.button-container button {
+    width: 100%;
+    height: 4vh !important;
+    /* padding: 10px; */
+    margin-bottom: 0.8vh;
+    border-radius: 1vh;
+    font-size: 13px;
+    color: #dddddd;
+    height: 3vh;
+    text-align: center;
+    border: none;
+}
+
+#adicionar-form-btn {
+    background-color: #55ab4d;
+    font-weight: 500;
+    border: none !important;
+}
+
+#fechar-form-btn {
+    background-color: #3088ad;
+    font-weight: 500;
+    border: none !important;
+}
+
+
+#adicionar-form-btn div{
+    width: 100%;
+    text-align: center;
+}
+
+.errorlist {
+    color: #bc3434;
+}
+
+.form-field, #id_tipo {
+    margin-bottom: 2vh;
+} 
+
+#id_saida {
+    margin-top: 2vh;
+}
+
+.bx {
+    font-size: 15px !important;
+    font-family: boxicons !important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    display: inline-block;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.filtro {
+    margin-left: auto;
+    display: inline-block;
+    position: relative;
+    width: min-content;
+}
+
+.dropdown-menu {
+    text-align: left;
+    font-size: 13px !important;
+    color: #dddddd !important;
+    font-weight: 300 !important;
+}
+
+.btn-secondary {
+    color: #dddddd;
+}
+
+#dropdownMenuButton {
+    background: none;
+    border: none;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div, #body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div:hover {
+    background-color: #222029 !important;
+    border: 1px solid grey !important;
+    color: #ddd !important;
+}
+
+.show {
+    width: min-content;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a{
+    color: #ddd !important;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a:hover {
+    color: #ddd !important;
+    background-color: #342f44;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .mb-0, .my-0 {
+        margin-bottom: 1vh !important;
+        font-size: 15px;
+    }
+
+    .card-body {
+        padding: 0.25rem;
+        font-size: 13px;
+    }
+
+    .card {
+        width: 100% !important;
+    }
+
+    .card-header {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .card-financeiro {
+        display: flow-root;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .form-container{
+        width: 71% !important;
+    }
+
+    .nav_name {
+        display: none;
+    }
+
+    .nav_logo-name {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    #myChart {
+        width: 100% !important;
+    }
+
+    #body-pd {
+        padding-left: 0px;
+    }
+
+    .container {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 2rem;
+    }
+
+    .card {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 576px) {
+    .container, .container-sm {
+        max-width: 100% !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 576px) {
+    .container, .container-sm {
+        max-width: 100% !important;
+    }
+}

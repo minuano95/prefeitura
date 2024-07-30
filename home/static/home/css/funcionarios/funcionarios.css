@@ -173,6 +173,29 @@ thead {
     font-size: 15px;
 }
 
+div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) .swal2-html-container, div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover, .swal2-styled {
+    font-size: 13px !important;
+}
+
+.swal-container-dark {
+    background-color: #333;
+}
+.swal-popup-dark {
+    background-color: #444;
+}
+.swal-header-dark {
+    background-color: #555;
+}
+.swal-title-dark {
+    color: #fff;
+}
+.swal-content-dark {
+    color: #dddddd;
+}
+
+#swal2-html-container {
+    color: #dddddd !important;
+}
 
 @media only screen and (max-width: 768px) {
     

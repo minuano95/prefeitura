@@ -112,6 +112,8 @@ LANGUAGE_CODE = 'pt-br'
 
 USE_I18N = True
 
+USE_L10N = True
+
 TIME_ZONE = 'America/Sao_Paulo'
 
 USE_TZ = True
@@ -120,6 +122,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = '/home/ec2-user/prefeitura/productionfiles/static/'
 
+
+
+LANGUAGE_CODE = 'pt-br'
 
 
 # Configurações para a pasta core dentro do diretório salao-sistema

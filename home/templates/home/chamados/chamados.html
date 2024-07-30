@@ -40,10 +40,10 @@
 						<p class="description">{{ agendamento.funcionario_abriu.nome }}</p>
 						
 						<p class="rotulo">Setor Abriu Chamado</p>
-						<p class="description">{{ agendamento.funcionario_abriu.setor }}</p>
+						<p class="description">{{ agendamento.funcionario_abriu.setor }} | {{ agendamento.funcionario_abriu.area_setor }}</p>
 
 						<p class="rotulo">Setor do Chamado</p>
-						<p class="description">{{ agendamento.setor.nome }} | {{ agendamento.funcionario_abriu.area_setor }}</p>
+						<p class="description">{{ agendamento.setor.nome }}</p>
 						
 						{% if agendamento.status %}
 							<p class="rotulo">Fechou Chamado</p>
@@ -104,6 +104,35 @@
 </div>
 </div>
 </div>
+
+<button class="fixed-button" onclick="redirecionar()">+</button>
+<script>
+    function redirecionar() {
+        window.location.href = `/chamados/abrir_chamado/`
+    }
+</script>
+
+{% if messages %}
+<script type="text/javascript">
+window.onload = function() {
+    {% for message in messages %}
+    Swal.fire({
+        icon: '{% if message.tags == "success" %}success{% elif message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}question{% endif %}', 
+        title: '{% if message.tags == "success" %}Sucesso{% elif message.tags == "error" %}Erro{% elif message.tags == "warning" %}Aviso{% elif message.tags == "info" %}Informação{% else %}Mensagem{% endif %}',
+        text: "{{ message }}",
+        customClass: {
+            container: 'swal-container-dark', // Estilo personalizado para o container
+            popup: 'swal-popup-dark', // Estilo personalizado para o popup
+            header: 'swal-header-dark', // Estilo personalizado para o header
+            title: 'swal-title-dark', // Estilo personalizado para o título
+            content: 'swal-content-dark', // Estilo personalizado para o conteúdo
+        }
+    });
+    {% endfor %}
+
+}
+</script>
+{% endif %}
 
 <script>
     $(document).ready(function() {

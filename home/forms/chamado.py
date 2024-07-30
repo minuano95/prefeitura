@@ -1,5 +1,7 @@
 from django import forms
 from ..models import Chamado
+from django.utils.timezone import localtime
+
 
 class ChamadoForm(forms.ModelForm):
     data_abertura_display = forms.DateTimeField(label='Data de Abertura', required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
@@ -8,7 +10,7 @@ class ChamadoForm(forms.ModelForm):
     class Meta:
         model = Chamado
         fields = ['descricao', 'funcionario_abriu', 'funcionario_fechou', 'setor', 'descricao_solucao', 'data_fechamento_display', 'status']
-        field_order = ['descricao', 'funcionario_abriu', 'funcionario_fechou', 'setor', 'status', 'descricao_solucao', 'data_abertura_display', 'data_fechamento_display']
+        field_order = ['descricao', 'funcionario_abriu', 'funcionario_fechou', 'setor', 'descricao_solucao', 'data_abertura_display', 'data_fechamento_display',  'status']
         widgets = {
             'descricao': forms.Textarea(attrs={'rows': 3}),
             'descricao_solucao': forms.Textarea(attrs={'rows': 3}),
@@ -25,9 +27,12 @@ class ChamadoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ChamadoForm, self).__init__(*args, **kwargs)
+
+        self.fields['funcionario_abriu'].required = False
+
         if self.instance and self.instance.pk:
-            self.fields['data_abertura_display'].initial = self.instance.data_abertura.strftime('%d/%m/%y %H:%M')
+            self.fields['data_abertura_display'].initial = localtime(self.instance.data_abertura).strftime('%d/%m/%y %H:%M')
         if self.instance.data_fechamento:
-            self.fields['data_fechamento_display'].initial = self.instance.data_fechamento.strftime('%d/%m/%y %H:%M')
+            self.fields['data_fechamento_display'].initial = localtime(self.instance.data_fechamento).strftime('%d/%m/%y %H:%M')
         else:
             self.fields['data_fechamento_display'].initial = ''

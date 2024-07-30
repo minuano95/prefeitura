@@ -1,0 +1,588 @@
+body {
+    background: radial-gradient(ellipse at right, #4da6bd, #a097a7);;
+    color: #dddddd !important;
+    font-size: 14px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.container {
+    min-width: 100vh;
+}
+
+.main_content {
+    min-width: 100vh;
+}
+
+.titulo {
+    margin-top: 1rem;
+    font-size: 1.5vw; /* Tamanho do texto responsivo em relação à largura da tela */
+    max-width: 600px; /* Tamanho máximo do texto para evitar que fique muito grande */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.card {
+    display: flex; /* Mantém o display como flexível, mas inline */
+    flex-direction: row;
+    background:  #222029;
+    border-radius: 10px;
+    margin-top: 6vh;
+    margin-bottom: 0;
+    max-height: 83vh; /* Defina a altura máxima para 90% da altura da janela de visualização */
+    overflow: hidden; /* Adicione uma barra de rolagem se o conteúdo exceder a altura máxima */
+    margin-top: 3rem;
+    font-size: 13px !important;
+}
+
+
+
+.data-funcionario {
+    margin: 1vw;
+    width: 100%;
+    border-left: rgb(141, 138, 150) 1px solid !important;
+    padding-left: 2vw;
+}
+
+.graphs-funcionario {
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    margin-bottom: 3vh;
+    margin-top: 1vh;
+}
+
+.pieChart{
+    margin-left: auto !important; 
+    margin-right: auto !important;
+}
+
+
+.pieChart2{
+    height: 100%;
+    margin: auto;
+}
+
+.form-funcionario {
+    margin: 1vw;
+    margin-right: 0;
+    width: 34%;
+    height: -webkit-fill-available;
+    margin-top: 1vh;
+}
+
+.tabela-agendamentos {
+    height: 56%;
+    overflow: auto; /* Use auto para mostrar a barra de rolagem apenas quando necessário */
+    box-sizing: border-box
+}
+
+.table {
+    color: #dddddd;
+}
+
+.table thead tr th {
+    color: #dddddd;
+    border: none;
+}
+
+.table tbody tr td {
+    background: none;
+    color: #dddddd;
+    border-top: rgb(141, 138, 150) 1px solid !important;
+    border-bottom: rgb(141, 138, 150) 1px solid !important;
+}
+
+
+.editar-agendamento a{
+    color: #dddddd !important;
+    text-decoration: none;
+    background-color: #ada230 !important;
+    font-weight: 500;
+    width: 9vh;
+    border: none;
+    margin-right: 4%;
+    padding: 0;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    border-radius: 0.7vh;
+}
+
+.excluir-agendamento a{
+    color: #dddddd !important;
+    text-decoration: none;
+    background-color: #bc3434;
+    font-weight: 500;
+    width: 9vh;
+    border: none;
+    margin-right: 4%;
+    padding: 0;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    border-radius: 0.7vh;
+}
+
+form {
+    /* padding-left: 2rem; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    width: auto;
+    text-align: center;
+}
+
+#body-pd > div.container > div.main_content > div > div.form-funcionario > form > div:nth-child(2) > label {
+    padding-top: 1vw;
+}
+
+option {
+    background-color: #222029;
+    text-shadow: black 15px solid;
+}
+option:active {
+    background-color: #403c50;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"],
+form select,
+form input[type="number"],
+form button {
+    width: calc(100% - 40px);
+    height: 4.5vh;
+    padding: 10px;
+    margin-bottom: 1.3vh;
+    border-radius: 1vh;
+    font-size: 13px;
+    background: none;
+    color: #dddddd;
+    border: 1px solid #6c757d;
+}
+
+.funcionario-form input {
+    display: block;
+}
+
+form select {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.funcionario-form input[type="text"],
+.funcionario-form input[type="text"],
+.funcionario-form input[type="tel"],
+.funcionario-form input[type="email"],
+.funcionario-form select,
+.funcionario-form input[type="number"],
+.funcionario-form input[type="checkbox"] {
+    display: block;
+    background-color: #f9f9f9;
+    columns: #ddd;
+}
+
+.funcionario-form button {
+    background-color: #ada230 !important;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0e5ca1;
+}
+
+.fecharForm {
+    background-color: #bc3434;
+}
+
+.fecharForm:hover {
+    background-color: #a10e0e;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* ou space-around, space-evenly, conforme necessário */
+    margin-top: 20px; /* Espaçamento entre os botões */
+    width: 29vh;
+    margin: auto;
+}
+
+/* Adicione estilos para os botões conforme necessário */
+.adiciona,
+.cancela,
+.btn-excluir {
+    padding: 0.5vh 0.5vh;
+    border: none;
+    border-radius: 5px;
+    height: 3.5vh;
+    font-size: 13px; /* Tamanho da fonte */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0.3vh !important;
+}
+
+/* Estilos específicos para o botão "Adicionar" */
+.adiciona {
+    background-color: #ada230 !important;
+    
+}
+
+/* Estilos específicos para o botão "Cancelar" */
+.cancela {
+    background-color: #3088ad !important;
+}
+
+.btn-excluir {
+    background-color: #bc3434;
+}
+
+.form-group {
+    margin-bottom: 0.5vh;
+}
+
+/* Efeito de hover para os botões */
+.adiciona:hover,
+.cancela:hover,
+.btn-excluir:hover {
+    filter: brightness(0.9); /* Ajuste a opacidade dos botões ao passar o mouse */
+}
+
+.error {
+    /* Estilos para a lista de erros que não pertencem a um campo específico */
+    color: #ff0000; /* Define a cor do texto para vermelho */
+    font-size: 13px; /* Define o tamanho da fonte para 14 pixels */
+    /* Adicione outros estilos conforme necessário */
+}
+
+.card-agendamento {
+    display: none;
+}
+
+
+.table table-striped-tabela {
+    display: none;
+}
+
+
+td.editar-agendamento {
+    padding-right: 0;
+    width: fit-content !important;
+}
+
+td.excluir-agendamento {
+    padding-left: 0.9vh;
+}
+
+
+
+
+#body-pd > div.container > div.main_content > div > div.form-funcionario > form > div.button-container > button.cancela {
+    color: #dddddd;
+    font-weight: 500;
+    background-color: #bc3434;
+    /* box-shadow: 0px 0px 10px hsla(0, 100%, 50%, 0.5); */
+}
+
+#body-pd > div.container > div.main_content > div > div.form-funcionario > form > div.button-container > button.adiciona {
+    color: #dddddd;
+    font-weight: 500;
+    background-color: #ada230 !important;
+    /* box-shadow: 0px 0px 10px rgba(27, 83, 189, 0.5); */
+}
+
+#body-pd > div.container > div.main_content > div > div.form-funcionario > form > div.button-container > button.btn-excluir {
+    color: #dddddd;
+    font-weight: 500;
+    /* box-shadow: 0px 0px 10px rgba(27, 83, 189, 0.5); */
+}
+
+input {
+    text-align: center;
+}
+
+.bx {
+    font-size: 15px;
+}
+
+.filtro {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-menu {
+    text-align: left;
+    font-size: 13px !important;
+    color: #dddddd !important;
+    font-weight: 300 !important;
+}
+
+.btn-secondary {
+    color: #dddddd;
+}
+
+#dropdownMenuButton {
+    background: none;
+    border: none;
+}
+
+#body-pd > div.container > div.main_content > div > div.data-funcionario > div.filtro > div > div {
+    background-color: #222029;
+    border: 1px solid grey;
+}
+
+.dropdown-item {
+    background-color: #222029;
+    color: #dddddd;
+    font-size: 13px !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) .swal2-html-container, div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover, .swal2-styled {
+    font-size: 13px !important;
+}
+
+.swal-container-dark {
+    background-color: #333;
+}
+.swal-popup-dark {
+    background-color: #444;
+}
+.swal-header-dark {
+    background-color: #555;
+}
+.swal-title-dark {
+    color: #fff;
+}
+.swal-content-dark {
+    color: #dddddd;
+}
+
+#swal2-html-container {
+    color: #dddddd !important;
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 760px) {
+    .table>:not(caption)>*>* {
+        padding: 0;
+    }
+
+
+    body {
+        font-size: 13px;
+    }
+    
+    .table table-striped {
+        display: none;
+    }
+
+    .tabela-mobile {
+        display: flow !important;
+    }
+
+    .table table-striped-tabela {
+        display: flex;
+    }
+    
+    .container {
+        min-width: 0;
+        margin-top: 2rem;
+    }
+    
+    .main_content {
+        min-width: 0;
+    }
+
+    .titulo {
+        font-size: 15px;
+    }
+
+    .card {
+        width: 100%;
+        font-size: 11px;
+        margin-top: 2rem;
+        max-height: max-content;
+        display: block;
+        padding: 1vh;
+        overflow: hidden;
+    }
+
+    .time {
+        font-size: 6px;
+    }
+
+    .data-funcionario {
+        border-top: none !important;
+        padding-top: 2vh;
+        margin: 0;
+        border-left: none !important;
+    }
+
+    .graphs-funcionario {
+        display: block;
+        height: 58vh;
+    }
+
+    .tabela-agendamentos {
+        display: none;
+    }
+
+    .graphs-funcionario {
+        margin-bottom: 2.5vh;
+    }
+
+    .table thead tr th {
+        padding: 1vh;
+    }
+
+    .table tbody tr td {
+        padding: 1vh;
+    }
+
+    
+    
+    .card-agendamento {
+        display: flex;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .funcionario-form input {
+        display: block;
+    }
+
+    .funcionario-form input[type="text"],
+    .funcionario-form input[type="tel"],
+    .funcionario-form input[type="email"],
+    .funcionario-form input[type="checkbox"],
+    .funcionario-form select,
+    .funcionario-form input[type="number"],
+    .funcionario-form button {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        text-align: center !important;
+    }
+
+    .button-container {
+        margin-left: 2vh;
+        width: 33vh;
+        margin: auto;
+    }
+
+    .button-container button {
+        width: 10vh;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+        height: 3.3vh;
+    }
+
+    .pieChart, .pieChart2{
+        height: max-content;
+        margin: none !important;
+        
+    }
+
+    #myPieChart, #myPieChart2 {
+        height: 28vh !important;
+    }
+
+    #myPieChart {
+        margin-bottom: 1.5vh;
+    }
+
+    .tabela-mobile {
+        overflow: auto; /* Use auto para mostrar a barra de rolagem apenas quando necessário */
+        box-sizing: border-box;
+    }
+
+    .table {
+        margin-top: 0;
+        margin-bottom: 2vh;
+        overflow: hidden;
+        display: inline-table;
+    }
+
+    .form-group {
+        margin-bottom: 1.3vh;
+    }
+
+    .form-funcionario {
+        padding-top: 0;
+        width: 100%;
+        padding-top: 2vh;
+        margin-top: 0;
+    }
+
+    form {
+        padding-left: 2.5vh;
+        padding-right: 2.5vh;
+    }
+
+
+    .editar-agendamento a{
+        padding-left: 0.6vh;
+        padding-right: 0.6vh;
+    }
+
+    .excluir-agendamento {
+        display: none;
+    }
+}
+
+
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 576px) {
+    .container, .container-sm {
+        max-width: 100% !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 576px) {
+    .container, .container-sm {
+        max-width: 100% !important;
+    }
+}

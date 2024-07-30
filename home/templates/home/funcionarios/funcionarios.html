@@ -25,7 +25,8 @@
 						<tr>
 							<th>Nome</th>
 							<th>Contato</th>
-							<th>CPF</th>
+							<th>Setor</th>
+							<th>Área setor</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -33,7 +34,8 @@
 						<tr class="funcionario-item" data-funcionario-staus="{{ funcionario.staus }}">
 							<td>{{ funcionario.nome }}</td>
 							<td>{{ funcionario.telefone }}</td>
-							<td>{{ funcionario.cpf }}</td>
+							<td>{{ funcionario.setor }}</td>
+							<td>{{ funcionario.area_setor }}</td>
 							<td class="editar-funcionario" style="white-space: nowrap !important;">
 								<a href="{% url 'home:edita_funcionario' funcionario.id %}">
 									Editar
@@ -78,8 +80,31 @@
 <button class="fixed-button" onclick="redirecionar()">+</button>
 <script>
     function redirecionar() {
-        window.location.href = `/salao/funcionarios/adiciona_funcionario/`
+        window.location.href = `/funcionarios/adiciona_funcionario/`
     }
 </script>
+
+
+{% if messages %}
+<script type="text/javascript">
+window.onload = function() {
+    {% for message in messages %}
+    Swal.fire({
+        icon: '{% if message.tags == "success" %}success{% elif message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}question{% endif %}', 
+        title: '{% if message.tags == "success" %}Sucesso{% elif message.tags == "error" %}Erro{% elif message.tags == "warning" %}Aviso{% elif message.tags == "info" %}Informação{% else %}Mensagem{% endif %}',
+        text: "{{ message }}",
+        customClass: {
+            container: 'swal-container-dark', // Estilo personalizado para o container
+            popup: 'swal-popup-dark', // Estilo personalizado para o popup
+            header: 'swal-header-dark', // Estilo personalizado para o header
+            title: 'swal-title-dark', // Estilo personalizado para o título
+            content: 'swal-content-dark', // Estilo personalizado para o conteúdo
+        }
+    });
+    {% endfor %}
+
+}
+</script>
+{% endif %}
 
 {% endblock %}

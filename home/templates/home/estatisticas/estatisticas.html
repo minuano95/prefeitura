@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}Financeiro{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Adicione este script para incluir o Chart.js -->
+<link rel="stylesheet" href="{% static 'home/css/estatisticas/estatisticas.css' %}">
+<script src="{% static 'salao/js/estatisticas/estatisticas.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page">
+        <div class="card">
+            <div class="card-header pb-0">
+                <h5 class="card-title mb-0">Estatísticas</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="myChart" style="width: 100%;"></canvas>
+			
+				<table class="table table-striped" style="width:100%">
+					<thead>
+						<tr>
+							<th>Mês</th>
+							<th>Chamados Abertos</th>
+							<th>Chamados Fechados</th>
+							<th>Chamados em Aberto</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for ano, meses in dados_por_mes.items %}
+							{% for mes, dados_mes in meses.items %}
+								<tr>
+									<td>{{ mes }}/{{ ano }}</td>
+									<td>{{ dados_mes.entradas }}</td>
+									<td>{{ dados_mes.saldo }}</td>
+									<td>{{ dados_mes.saidas }}</td>
+									<td class="editar-funcionario" style="color: #36A2EB; white-space: nowrap !important">
+										<a href="{% url 'salao:analise_mes' mes ano %}">
+											Analisar
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+				{%for funcionario in funcionarios %}
+					<div class="card-mes">
+						<p class="description">{{ funcionario.nome }}</p>
+						<p class="description" style="color: #7a7a7a">{{ funcionario.telefone }}</p>
+						<p class="description" style="color: #7a7a7a">{{ funcionario.cpf }}</p>
+						<p class="description" style="color: #7a7a7a">{{ funcionario.email }}</p>
+						<span class="editar-agendamento" data-agendamento-id="{{ funcionario.id }}"><a href="{% url 'salao:edita_funcionario' funcionario.id %}">Editar</a></span>
+						<span class="cancelar-agendamento"><a href="{% url 'salao:exclui_funcionario' funcionario.id %}">Excluir</a></span>
+
+					</div>
+				{%endfor%}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+    function adicionaRegistroFinanceiro() {
+        var tipo = document.getElementById('id_tipo').value;
+        var errorsExist = false;
+    
+        // Ajuste a obrigatoriedade e desabilitação dos campos com base no tipo selecionado
+        if (tipo === 'fixo' || tipo === 'variavel' || tipo === 'produtos') {
+            // Se 'fixo', 'variavel' ou 'produtos' for selecionado, torne 'saida' e 'descricao' obrigatórios
+            if (!document.getElementById('id_saida').value.trim() || !document.getElementById('id_descricao').value.trim()) {
+                errorsExist = true;
+            }
+            document.getElementById('id_saida').required = true;
+            document.getElementById('id_descricao').required = true;
+            document.getElementById('id_id_funcionario').disabled = true; // Desabilita o campo 'id_funcionario'
+            document.getElementById('id_entrada').disabled = true; // Desabilita o campo 'entrada'
+        } else if (tipo === 'funcionarios') {
+            // Se 'funcionarios' for selecionado, torne 'saida', 'descricao' e 'id_funcionario' obrigatórios
+            if (!document.getElementById('id_saida').value.trim() || !document.getElementById('id_descricao').value.trim() || !document.getElementById('id_id_funcionario').value.trim()) {
+                errorsExist = true;
+            }
+            document.getElementById('id_saida').required = true;
+            document.getElementById('id_descricao').required = true;
+            document.getElementById('id_id_funcionario').required = true;
+            document.getElementById('id_entrada').disabled = true; // Desabilita o campo 'entrada'
+        } else if (tipo === 'entrada') {
+            // Se 'entrada' for selecionado, torne 'entrada' e 'descricao' obrigatórios
+            if (!document.getElementById('id_entrada').value.trim() || !document.getElementById('id_descricao').value.trim()) {
+                errorsExist = true;
+            }
+            document.getElementById('id_entrada').required = true;
+            document.getElementById('id_descricao').required = true;
+            document.getElementById('id_saida').disabled = true; // Desabilita o campo 'saida'
+            document.getElementById('id_id_funcionario').disabled = true; // Desabilita o campo 'id_funcionario'
+        }
+    
+        if (errorsExist) {
+            // Se houver erros, retorne false para evitar o fechamento do formulário
+            return false;
+        }
+    
+        // Envie o formulário se não houver erros
+
+        
+        return true;
+    }
+</script>
+
+<button class="fixed-button" onclick="$('.form-container').css('display', 'flex');">+</button>
+
+<script>
+    // Dados vindos do Django
+    const dadosPorMes = {{ dados_por_mes|safe }};
+
+    // Preparando os dados para o gráfico
+    const labels = [];
+    const saldo = [];
+    const saidas = [];
+    const bruto = [];
+    const lucro = [];
+
+    for (const ano in dadosPorMes) {
+        for (const mes in dadosPorMes[ano]) {
+            labels.push(`${mes}/${ano}`);
+            const dadosMes = dadosPorMes[ano][mes];
+            saldo.push(parseFloat(dadosMes.saldo?.replace('R$ ', '').replace(',', '.') || 0));
+            saidas.push(parseFloat(dadosMes.saidas?.replace('R$ ', '').replace(',', '.') || 0));
+            bruto.push(parseFloat(dadosMes.bruto?.replace('R$ ', '').replace(',', '.') || 0));
+            lucro.push(parseFloat(dadosMes.lucro?.replace('R$ ', '').replace(',', '.') || 0));
+        }
+    }
+
+    var data = {
+        labels: labels,
+        datasets: [{
+            label: 'Bruto',
+            borderColor: '#A67B50',
+            data: bruto,
+            fill: true, // Preencher a área abaixo da linha
+            tension: 0 // Linhas retas
+        }, {
+            label: 'Lucro',
+            borderColor: '#7BA650',
+            data: lucro,
+            fill: true, // Preencher a área abaixo da linha
+            tension: 0 // Linhas retas
+        }]
+    };
+
+    // Função para determinar se os rótulos devem ser exibidos
+    function shouldDisplayLabels() {
+        return window.innerWidth >= 768; // Define 768px como o ponto de interrupção entre desktop e mobile
+    }
+
+    var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                ticks: {
+                    display: shouldDisplayLabels(), // Define se os rótulos dos ticks no eixo x são exibidos
+                    color: '#ddd', // Define a cor dos rótulos dos ticks como #ddd
+                    autoSkip: false, // Não pula rótulos
+                    maxRotation: 0, // Rotaciona rótulos para evitar sobreposição
+                    minRotation: 0 // Rotaciona rótulos para evitar sobreposição
+                },
+                grid: {
+                    color: '#373737' // Define a cor das linhas de grade como #373737
+                }
+            },
+            y: {
+                ticks: {
+                    color: '#ddd' // Define a cor dos rótulos dos ticks como #ddd
+                },
+                grid: {
+                    color: '#373737' // Define a cor das linhas de grade como #373737
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ddd' // Define a cor das legendas como #ddd
+                },
+                position: 'bottom',
+                align: 'center',
+            },
+            tooltip: {
+                titleFontColor: '#ddd', // Define a cor do título do tooltip como #ddd
+                bodyFontColor: '#ddd', // Define a cor do corpo do tooltip como #ddd
+                backgroundColor: 'rgba(0, 0, 0, 0.8)', // Define a cor de fundo do tooltip
+                borderColor: 'black', // Define a cor da borda do tooltip
+                borderWidth: 1 // Define a largura da borda do tooltip
+            }
+        }
+    };
+
+    // Função para atualizar a exibição dos rótulos ao redimensionar a janela
+    function updateChart() {
+        myChart.options.scales.x.ticks.display = shouldDisplayLabels();
+        myChart.update();
+    }
+
+    // Adiciona um event listener para atualizar o gráfico ao redimensionar a janela
+    window.addEventListener('resize', updateChart);
+
+    // Get the context of the canvas element we want to select
+    var ctx = document.getElementById("myChart").getContext('2d');
+
+    // Create the line chart
+    var myChart = new Chart(ctx, {
+        type: 'line', // Mudei o tipo para 'line' pois o fill: true já cria o efeito de área preenchida
+        data: data,
+        options: options
+    });
+</script>
+
+
+
+	
+{% endblock %}

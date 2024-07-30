@@ -27,7 +27,7 @@ body {
     background-color: #222029 !important;
     color: #dddddd !important;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 3vh !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 3.5rem;
     width: 50%;
@@ -100,7 +100,7 @@ form select {
 
 .button-container {
     display: flex;
-    width: 80%;
+    width: 53%;
     margin: auto;
     margin-top: 1.5vh; /* Espaçamento entre os botões */
 }
@@ -228,10 +228,15 @@ input[type=checkbox] {
     height: 4vh !important;
 }
 
+
+#spanDescricao > #id_descricao {
+    height: 40vh !important;
+}
+
 /* Estilos responsivos */
 @media only screen and (max-width: 600px) {
     .card {
-        font-size: 11px;
+        font-size: 11px !important;
         width: 90%;
     }
 
@@ -252,7 +257,7 @@ input[type=checkbox] {
         width: calc(100% - 20px);
         padding: 5px;
         margin-bottom: 5px;
-        font-size: 12px;
+        font-size: 11px !important;
     }
 
     #body-pd > div.container > div.main_content > div > form > p > label {
@@ -264,7 +269,7 @@ input[type=checkbox] {
         width: calc(100% - 20px);
         padding: 5px;
         margin-bottom: 5px !important;
-        font-size: 12px;
+        font-size: 11px !important;
     }
 
     #body-pd > div.container > div.main_content > div > form > p {
@@ -282,6 +287,10 @@ input[type=checkbox] {
     }
 
     #body-pd > div.container > div.main_content > div > form > div:nth-child(3) > fieldset > legend {
-        font-size: 13px !important;
+        font-size: 11px !important;
+    }
+
+    .adiciona, .cancela, .edita, .exclui {
+        font-size: 11px !important;
     }
 }

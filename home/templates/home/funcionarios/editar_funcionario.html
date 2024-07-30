@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_name %}Editar Funcionário{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="{% static 'home/css/funcionarios/editar_funcionario.css' %}">
+<script>
+    function redirecionarParaPagina() {
+        window.location.href = '/funcionarios/';
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+        <div class="form-funcionario">
+                <form action="{% url 'home:edita_funcionario' funcionario.id %}" method="POST">
+                    {% csrf_token %}
+                {% comment %} <h1 class="titulo">Editar Funcionário</h1> {% endcomment %}
+                
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}"  style="display: block; {% if field.id_for_label == id_status %}display: flex;{% endif %}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <span class="error">{{ field.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <div class="button-container">
+                    <button type="button" class="cancela" onclick="redirecionarParaPagina();">Cancelar</button>
+                    <button type="submit" class="adiciona">Editar</button>
+                    <button type="button" class="btn-excluir" onclick="redirecionarParaPaginaExcluir({{ funcionario.id }});">Excluir</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="data-funcionario" >
+            <div class="tabela-agendamentos">
+                <table class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Setor</th>
+                            <th>Funcionário Abriu</th>
+                            <th>Data Abertura</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        {%for chamado in agendamentos %}
+                        <tr class="agendamento-item" data-agendamento-staus="{{ funcionario.staus }}">
+                            <td>{{ chamado.descricao }}</td>
+                            <td>{{ chamado.setor}}</td>
+                            <td>{{ chamado.funcionario_abriu }}</td>
+                            <td>{{ chamado.data_abertura|date:"d/m/Y H:i" }}</td>
+                            <td class="editar-agendamento" style="color: #36A2EB; white-space: nowrap !important;">
+                                <a href="{% url 'home:edita_chamado' chamado.id %}">
+                                    Editar
+                                </a>
+                            </td>
+                            <td class="excluir-agendamento" style="color: #36A2EB; white-space: nowrap !important;">
+                                <a href="{% url 'home:deleta_chamado_funcionario' chamado.id %}">Excluir</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+            <div class="tabela-mobile" style="display: none;">
+                <table class="table table-striped-tabela" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Cliente</th>
+                            <th>Data</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        {%for agendamento in agendamentos %}
+                        <tr class="agendamento-item" data-agendamento-staus="{{ funcionario.staus }}">
+                            <td style="white-space: nowrap !important;">{{ agendamento.descricao }}</td>
+                            <td style="white-space: nowrap !important;">{{ agendamento.setor }}</td>
+                            <td style="white-space: nowrap !important;">{{ agendamento.data_abertura|date:"d/m/Y" }}</td>
+                            <td class="editar-agendamento" style="color: #36A2EB; white-space: nowrap !important;">
+                                <a href="{% url 'home:edita_chamado' agendamento.id %}">
+                                    Editar
+                                </a>
+                            </td>
+                            <td class="excluir-agendamento" style="color: #36A2EB;">
+                                <a href="{% url 'home:deleta_chamado_funcionario' agendamento.id %}">Excluir</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+
+
+{% if messages %}
+<script type="text/javascript">
+window.onload = function() {
+    {% for message in messages %}
+    Swal.fire({
+        icon: '{% if message.tags == "success" %}success{% elif message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}question{% endif %}', 
+        title: '{% if message.tags == "success" %}Sucesso{% elif message.tags == "error" %}Erro{% elif message.tags == "warning" %}Aviso{% elif message.tags == "info" %}Informação{% else %}Mensagem{% endif %}',
+        text: "{{ message }}",
+        customClass: {
+            container: 'swal-container-dark', // Estilo personalizado para o container
+            popup: 'swal-popup-dark', // Estilo personalizado para o popup
+            header: 'swal-header-dark', // Estilo personalizado para o header
+            title: 'swal-title-dark', // Estilo personalizado para o título
+            content: 'swal-content-dark', // Estilo personalizado para o conteúdo
+        }
+    });
+    {% endfor %}
+
+}
+</script>
+{% endif %}
+
+<script>
+    function redirecionarParaPaginaExcluir(funcionario_id) {
+        window.location.href = '/funcionarios/exclui_funcionario/' + funcionario_id;
+    }
+</script>
+
+{%endblock%}
+

@@ -58,6 +58,10 @@ button::selection {
     background-color: #55ab4d;
 }
 
+div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) .swal2-html-container, div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover, .swal2-styled {
+    font-size: 13px !important;
+}
+
 .swal-container-dark {
     background-color: #333;
 }
