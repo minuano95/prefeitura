@@ -26,7 +26,11 @@ body {
 }
 
 .mb-0, .my-0 {
-    font-size: 15px;
+    font-size: 13px;
+}
+
+.bx {
+    font-size: 13px !important;
 }
 
 .card-body {
@@ -41,7 +45,7 @@ body {
     border-bottom-width: 1px;
     padding: 1rem 1.25rem;
     margin-bottom: 0;
-    /* background-color: #fff; */
+    /* background-color: #ddd; */
     border-bottom: 0 solid transparent;
 }
 
@@ -297,7 +301,7 @@ form select {
 }
 
 .errorlist {
-    color: #bc3434;
+    color: #d14949;
 }
 
 .form-field, #id_tipo {
@@ -309,7 +313,7 @@ form select {
 }
 
 .bx {
-    font-size: 15px !important;
+    font-size: 13px !important;
     font-family: boxicons !important;
     font-weight: 400;
     font-style: normal;
@@ -323,27 +327,17 @@ form select {
 }
 
 
-.filtro {
-    margin-left: auto;
-    display: inline-block;
-    position: relative;
-    width: min-content;
-}
-
-.dropdown-menu {
-    text-align: left;
-    font-size: 13px !important;
-    color: #dddddd !important;
-    font-weight: 300 !important;
-}
 
 .btn-secondary {
     color: #dddddd;
 }
 
-#dropdownMenuButton {
-    background: none;
-    border: none;
+#nav-bar > nav > div > a > i {
+    font-size: 13px !important;
+}
+
+#nav-bar > nav > div > a > span {
+    font-size: 14px !important;
 }
 
 #body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div, #body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div:hover {
@@ -354,6 +348,45 @@ form select {
 
 .show {
     width: min-content;
+}
+
+.pieGraphs {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div {
+    width: 25%; 
+    max-height: 8rem; 
+    margin-bottom: 7vh;
+}
+
+#pieChart, #pieChart2, #pieChart3, #pieChart4 {
+    margin: auto; 
+    max-width: 50%
+}
+
+#body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div> p {
+    text-align: center;
+    /* font-weight: 500;
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem; */
+}
+
+@media screen and (min-width: 768px) {
+    .show {
+        width: calc(var(--nav-width) + 156px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0;
+    }
 }
 
 #body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a{
@@ -373,7 +406,7 @@ form select {
 
     .mb-0, .my-0 {
         margin-bottom: 1vh !important;
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .card-body {
@@ -406,6 +439,26 @@ form select {
 
     .nav_logo-name {
         display: none;
+    }
+
+    #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div {
+        width: 50%;
+        max-height: 8rem !important;
+        margin-bottom: 12vh !important;
+        border-top: 1px solid grey;
+    }
+
+    #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div> p {
+        text-align: center;
+        font-weight: 500;
+        width: 80%;
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div:nth-child(3), #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div:nth-child(4) {
+        margin-bottom: 16vh !important;
     }
 }
 

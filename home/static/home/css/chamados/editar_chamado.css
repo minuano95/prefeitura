@@ -89,7 +89,7 @@ form select {
 
 .fecharForm {
     height: 2vh;
-    background-color: #bc3434;
+    background-color: #d14949;
     color: #ddd;
     padding: 0 !important;
 }
@@ -139,29 +139,29 @@ form select {
 .adiciona {
     height: 2vh;
     background-color: #55ab4d;
-    color: #fff;
+    color: #ddd;
     padding: 0 !important;
 }
 
 .exclui {
     height: 2vh;
     background-color: #3088ad;
-    color: #fff;
+    color: #ddd;
     padding: 0 !important;
 }
 
 .edita {
     height: 2vh;
-    background-color: #ada230;
-    color: #fff;
+    background-color: #ada127;
+    color: #ddd;
     padding: 0 !important;
 }
 
 /* Estilos específicos para o botão "Cancelar" */
 .cancela {
     height: 2vh;
-    background-color: #bc3434;
-    color: #fff;
+    background-color: #d14949;
+    color: #ddd;
     padding: 0 !important;
 }
 

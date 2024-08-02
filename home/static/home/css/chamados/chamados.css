@@ -274,7 +274,7 @@ body {
 .filter-options {
     display: none;
     position: absolute;
-    background-color: #fff; /* Cor de fundo do menu */
+    background-color: #ddd; /* Cor de fundo do menu */
     border: 1px solid #6c757d; /* Borda do menu */
     padding: 10px;
     margin-top: 1.4rem;
@@ -298,7 +298,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: none; /* Inicialmente oculto */
-    color: #fff; /* Cor do texto */
+    color: #ddd; /* Cor do texto */
 }
 
 .description-data {
@@ -312,7 +312,7 @@ body {
 }
 
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentos > .passado {
-    border: 1px solid #b57b1e;
+    border: 2px solid #614e2f;
 }
 
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentos > .passado .description-data {
@@ -320,7 +320,7 @@ body {
 }
 
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentosConcluidos  > .concluido {
-    border: 1px solid #59b390;
+    border: 2px solid #425a51;
 }
 #body-pd > div.container > div.main_content > div > div > div > div > div > div.card-agendamentos > div.agendamentosConcluidos  > .concluido .description-data {
     color:  #59b390;
@@ -335,45 +335,45 @@ body {
 
 .agenda-item .alteracoes-conteiner .editar-agendamento,
 .agenda-item .alteracoes-conteiner .editar-agendamento a {
-    color: #fff !important;
-    background-color: #ada230;
+    color: #ddd !important;
+    background-color: #ada127;
     border-radius: 1vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
 }
 
 .agenda-item .alteracoes-conteiner .cancelar-agendamento, 
 .agenda-item .alteracoes-conteiner .cancelar-agendamento a{
-    color: #fff !important;
-    background-color: #bc3434;
+    color: #ddd !important;
+    background-color: #d14949;
     border-radius: 1vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
 }
 
 .agenda-item .alteracoes-conteiner .reabrir-agendamento, 
 .agenda-item .alteracoes-conteiner .reabrir-agendamento a{
-    color: #fff !important;
+    color: #ddd !important;
     background-color: #3088ad;
     border-radius: 1vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
 }
 
 .agenda-item .alteracoes-conteiner .concluir-agendamento, 
 .agenda-item .alteracoes-conteiner .concluir-agendamento a{
-    color: #fff !important;
+    color: #ddd !important;
     background-color: #55ab4d;
     border-radius: 1vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
 }
 
@@ -480,7 +480,7 @@ div:where(.swal2-container) input:where(.swal2-input):focus, div:where(.swal2-co
 }
 
 #body-pd > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-cancel {
-    background-color: #bc3434;
+    background-color: #d14949;
 }
 
 div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) button.swal2-confirm {
@@ -501,7 +501,7 @@ div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) 
     background-color: #555;
 }
 .swal-title-dark {
-    color: #fff;
+    color: #ddd;
 }
 .swal-content-dark {
     color: #dddddd;

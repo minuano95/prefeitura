@@ -96,7 +96,7 @@ body {
 .editar-agendamento a{
     color: #dddddd !important;
     text-decoration: none;
-    background-color: #ada230 !important;
+    background-color: #ada127 !important;
     font-weight: 500;
     width: 9vh;
     border: none;
@@ -110,7 +110,7 @@ body {
 .excluir-agendamento a{
     color: #dddddd !important;
     text-decoration: none;
-    background-color: #bc3434;
+    background-color: #d14949;
     font-weight: 500;
     width: 9vh;
     border: none;
@@ -180,7 +180,7 @@ form select {
 }
 
 .funcionario-form button {
-    background-color: #ada230 !important;
+    background-color: #ada127 !important;
     font-size: 13px;
     font-weight: bold;
     border: none;
@@ -193,7 +193,7 @@ form button:hover {
 }
 
 .fecharForm {
-    background-color: #bc3434;
+    background-color: #d14949;
 }
 
 .fecharForm:hover {
@@ -224,7 +224,7 @@ form button:hover {
 
 /* Estilos específicos para o botão "Adicionar" */
 .adiciona {
-    background-color: #ada230 !important;
+    background-color: #ada127 !important;
     
 }
 
@@ -234,7 +234,7 @@ form button:hover {
 }
 
 .btn-excluir {
-    background-color: #bc3434;
+    background-color: #d14949;
 }
 
 .form-group {
@@ -280,14 +280,14 @@ td.excluir-agendamento {
 #body-pd > div.container > div.main_content > div > div.form-funcionario > form > div.button-container > button.cancela {
     color: #dddddd;
     font-weight: 500;
-    background-color: #bc3434;
+    background-color: #d14949;
     /* box-shadow: 0px 0px 10px hsla(0, 100%, 50%, 0.5); */
 }
 
 #body-pd > div.container > div.main_content > div > div.form-funcionario > form > div.button-container > button.adiciona {
     color: #dddddd;
     font-weight: 500;
-    background-color: #ada230 !important;
+    background-color: #ada127 !important;
     /* box-shadow: 0px 0px 10px rgba(27, 83, 189, 0.5); */
 }
 
@@ -351,7 +351,7 @@ div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) 
     background-color: #555;
 }
 .swal-title-dark {
-    color: #fff;
+    color: #ddd;
 }
 .swal-content-dark {
     color: #dddddd;

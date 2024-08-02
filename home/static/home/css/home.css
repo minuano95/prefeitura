@@ -51,7 +51,7 @@ button::selection {
 }
 
 .posicao-financeira {
-    background-color: #bc3434;
+    background-color: #d14949;
 }
 
 .contato {
@@ -72,7 +72,7 @@ div:where(.swal2-container) h2:where(.swal2-title), div:where(.swal2-container) 
     background-color: #555;
 }
 .swal-title-dark {
-    color: #fff;
+    color: #ddd;
 }
 .swal-content-dark {
     color: #dddddd;

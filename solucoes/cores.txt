@@ -10,9 +10,9 @@ ou
 
 botoes
 azul = #3088ad
-vermelho = #bc3434
+vermelho = #d14949
 verde = #55ab4d
-amarelo = #ada230 
+amarelo = #ada127 
 
 
 cores gráfico

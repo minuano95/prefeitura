@@ -115,7 +115,7 @@ thead {
 .editar-funcionario a {
     color: #dddddd !important;
     text-decoration: none;
-    background-color: #ada230 !important;
+    background-color: #ada127 !important;
     /* box-shadow: 0px 0px 10px rgba(27, 83, 189, 0.5); */
     width: 9vh;
     font-weight: 500;
@@ -134,7 +134,7 @@ thead {
 .excluir-funcionario a { 
     color: #dddddd !important;
     text-decoration: none;
-    background-color: #bc3434 !important;
+    background-color: #d14949 !important;
     font-weight: 500;
     /* box-shadow: 0px 0px 10px hsla(0, 100%, 50%, 0.5); */
     width: 9vh;
@@ -236,7 +236,7 @@ form select {
 
 /* Estilos específicos para o botão "Cancelar" */
 .cancela {
-    background-color: #bc3434;
+    background-color: #d14949;
 }
 
 /* Efeito de hover para os botões */
