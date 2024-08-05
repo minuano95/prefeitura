@@ -21,6 +21,11 @@ urlpatterns = [
    
     path('estatisticas/', estatisticas_view, name='estatisticas'),
 
+    path('setores/', setores_view, name='setores'),
+    path('setores/adiciona_setor/', adiciona_setor, name='adiciona_setor'),
+    path('setores/edita_setor/<int:setor_id>/', edita_setor, name='edita_setor'),
+    path('setores/exclui_setor/<int:setor_id>/', exclui_setor, name='exclui_setor'),
+
     path('login/', login_view, name='login'),
     path("logout/", logout_view, name="logout"),
 ]

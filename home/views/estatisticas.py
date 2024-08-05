@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from ..models import Chamado
+from ..models import Chamado, Setor, Funcionario
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
@@ -75,16 +75,44 @@ def get_dados_por_mes(request):
 
 def get_top_sectors_and_employees(request):
     # Top 3 setores que mais abrem chamados
-    setores_mais_abrem = Chamado.objects.values('setor').annotate(total_abertos=Count('id')).order_by('-total_abertos')[:3]
-
+    setores_mais_abrem_ids = Chamado.objects.values('setor').annotate(total_abertos=Count('id')).order_by('-total_abertos')[:3]
+    setores_mais_abrem = [
+        {
+            'setor': Setor.objects.get(id=s['setor']),
+            'total_abertos': s['total_abertos']
+        }
+        for s in setores_mais_abrem_ids
+    ]
+    
     # Top 3 setores que mais recebem chamados
-    setores_mais_recebem = Chamado.objects.values('setor').annotate(total_recebidos=Count('id')).order_by('-total_recebidos')[:3]
-
+    setores_mais_recebem_ids = Chamado.objects.values('setor').annotate(total_recebidos=Count('id')).order_by('-total_recebidos')[:3]
+    setores_mais_recebem = [
+        {
+            'setor': Setor.objects.get(id=s['setor']),
+            'total_recebidos': s['total_recebidos']
+        }
+        for s in setores_mais_recebem_ids
+    ]
+    
     # Top 3 funcionários que mais abrem chamados
-    funcionarios_mais_abrem = Chamado.objects.values('funcionario_abriu').annotate(total_abertos=Count('id')).order_by('-total_abertos')[:3]
-
+    funcionarios_mais_abrem_ids = Chamado.objects.values('funcionario_abriu').annotate(total_abertos=Count('id')).order_by('-total_abertos')[:3]
+    funcionarios_mais_abrem = [
+        {
+            'funcionario': Funcionario.objects.get(id=f['funcionario_abriu']),
+            'total_abertos': f['total_abertos']
+        }
+        for f in funcionarios_mais_abrem_ids
+    ]
+    
     # Top 3 funcionários que mais fecham chamados
-    funcionarios_mais_fecham = Chamado.objects.filter(status=True).values('funcionario_fechou').annotate(total_fechados=Count('id')).order_by('-total_fechados')[:3]
+    funcionarios_mais_fecham_ids = Chamado.objects.filter(status=True).values('funcionario_fechou').annotate(total_fechados=Count('id')).order_by('-total_fechados')[:3]
+    funcionarios_mais_fecham = [
+        {
+            'funcionario': Funcionario.objects.get(id=f['funcionario_fechou']),
+            'total_fechados': f['total_fechados']
+        }
+        for f in funcionarios_mais_fecham_ids
+    ]
 
     return {
         'setores_mais_abrem': setores_mais_abrem,
@@ -96,11 +124,19 @@ def get_top_sectors_and_employees(request):
 def estatisticas_view(request):
     dados_por_mes = get_dados_por_mes(request)
     top_dados = get_top_sectors_and_employees(request)
+
+    # Extraindo os valores para passar ao template
+    setores_mais_abrem = [(data["setor"].nome, data["total_abertos"]) for data in top_dados["setores_mais_abrem"]]
+    setores_mais_recebem = [(data["setor"].nome, data["total_recebidos"]) for data in top_dados["setores_mais_recebem"]]
+    funcionarios_mais_abrem = [(data["funcionario"].nome, data["total_abertos"]) for data in top_dados["funcionarios_mais_abrem"]]
+    funcionarios_mais_fecham = [(data["funcionario"].nome, data["total_fechados"]) for data in top_dados["funcionarios_mais_fecham"]]
+
     context = {
         'dados_por_mes': dados_por_mes,
-        'top_setores_abrem': top_dados['setores_mais_abrem'],
-        'top_setores_recebem': top_dados['setores_mais_recebem'],
-        'top_funcionarios_abrem': top_dados['funcionarios_mais_abrem'],
-        'top_funcionarios_fecham': top_dados['funcionarios_mais_fecham'],
+        'top_setores_abrem': setores_mais_abrem,
+        'top_setores_recebem': setores_mais_recebem,
+        'top_funcionarios_abrem': funcionarios_mais_abrem,
+        'top_funcionarios_fecham': funcionarios_mais_fecham,
     }
+
     return render(request, 'home/estatisticas/estatisticas.html', context)
