@@ -3,8 +3,8 @@
 :root {
     --header-height: 3rem;
     --nav-width: 68px;
-    --first-color: #a48eff;
-    --first-color-light: #a48eff;
+    --first-color: #D19C5F;
+    --first-color-light: #D19C5F;
     --white-color: #F7F6FB;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
@@ -174,7 +174,7 @@ body {
 }
 
 #nav-bar > nav > div > a > i {
-    color: #a48eff !important;
+    color: #D19C5F !important;
 }
 
 

@@ -358,23 +358,29 @@ form select {
 
 #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div {
     width: 25%; 
-    max-height: 8rem; 
-    margin-bottom: 7vh;
+    max-height: 20rem; 
+    margin-bottom: 4vh;
 }
 
-#pieChart, #pieChart2, #pieChart3, #pieChart4 {
+#setorMaisAbre, #setorMaisFecha, #funcionarioMaisAbre, #funcionarioMaisFecha {
     margin: auto; 
-    max-width: 50%
+    max-width: 40%
 }
 
 #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div> p {
     text-align: center;
-    /* font-weight: 500;
-    width: 80%;
-    margin: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem; */
 }
+
+
+#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a{
+    color: #ddd !important;
+}
+
+#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a:hover {
+    color: #ddd !important;
+    background-color: #342f44;
+}
+
 
 @media screen and (min-width: 768px) {
     .show {
@@ -389,19 +395,14 @@ form select {
     }
 }
 
-#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a{
-    color: #ddd !important;
-}
-
-#body-pd > div.container > div.main_content > div.container > div > div > div > div > div > div > a:hover {
-    color: #ddd !important;
-    background-color: #342f44;
-}
-
 
 @media only screen and (max-width: 768px) {
     body {
         padding: 0;
+    }
+
+    .container {
+        margin-top: 2rem !important;
     }
 
     .mb-0, .my-0 {
@@ -444,7 +445,7 @@ form select {
     #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div {
         width: 50%;
         max-height: 8rem !important;
-        margin-bottom: 12vh !important;
+        margin-bottom: 6vh !important;
         border-top: 1px solid grey;
     }
 
@@ -458,7 +459,7 @@ form select {
     }
 
     #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div:nth-child(3), #body-pd > div.container > div.main_content > div > div > div > div.card-body > div > div:nth-child(4) {
-        margin-bottom: 16vh !important;
+        margin-bottom: 6vh !important;
     }
 }
 

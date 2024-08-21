@@ -10,6 +10,8 @@ from calendar import monthrange
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 import logging
+import json
+from django.utils.safestring import mark_safe
 
 def get_dados_por_mes(request):    
     # Verificar o primeiro registro financeiro
@@ -125,18 +127,17 @@ def estatisticas_view(request):
     dados_por_mes = get_dados_por_mes(request)
     top_dados = get_top_sectors_and_employees(request)
 
-    # Extraindo os valores para passar ao template
-    setores_mais_abrem = [(data["setor"].nome, data["total_abertos"]) for data in top_dados["setores_mais_abrem"]]
-    setores_mais_recebem = [(data["setor"].nome, data["total_recebidos"]) for data in top_dados["setores_mais_recebem"]]
-    funcionarios_mais_abrem = [(data["funcionario"].nome, data["total_abertos"]) for data in top_dados["funcionarios_mais_abrem"]]
-    funcionarios_mais_fecham = [(data["funcionario"].nome, data["total_fechados"]) for data in top_dados["funcionarios_mais_fecham"]]
+    setores_mais_abrem = json.dumps([(data["setor"].nome, data["total_abertos"]) for data in top_dados["setores_mais_abrem"]])
+    setores_mais_recebem = json.dumps([(data["setor"].nome, data["total_recebidos"]) for data in top_dados["setores_mais_recebem"]])
+    funcionarios_mais_abrem = json.dumps([(data["funcionario"].nome, data["total_abertos"]) for data in top_dados["funcionarios_mais_abrem"]])
+    funcionarios_mais_fecham = json.dumps([(data["funcionario"].nome, data["total_fechados"]) for data in top_dados["funcionarios_mais_fecham"]])
 
     context = {
         'dados_por_mes': dados_por_mes,
-        'top_setores_abrem': setores_mais_abrem,
-        'top_setores_recebem': setores_mais_recebem,
-        'top_funcionarios_abrem': funcionarios_mais_abrem,
-        'top_funcionarios_fecham': funcionarios_mais_fecham,
+        'top_setores_abrem': mark_safe(setores_mais_abrem),
+        'top_setores_recebem': mark_safe(setores_mais_recebem),
+        'top_funcionarios_abrem': mark_safe(funcionarios_mais_abrem),
+        'top_funcionarios_fecham': mark_safe(funcionarios_mais_fecham),
     }
 
     return render(request, 'home/estatisticas/estatisticas.html', context)

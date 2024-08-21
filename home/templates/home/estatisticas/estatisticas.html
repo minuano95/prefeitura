@@ -23,19 +23,19 @@
                 <div class="pieGraphs">
                     <div>
                         <p style="text-align:center; font-weight: 500">Setor mais abre</p>
-                        <canvas id="pieChart"></canvas>
+                        <canvas id="setorMaisAbre"></canvas>
                     </div>
                     <div>
                         <p style="text-align:center; font-weight: 500">Setor que mais fecha</p>
-                        <canvas id="pieChart2"></canvas>
+                        <canvas id="setorMaisFecha"></canvas>
                     </div>
                     <div>
                         <p style="text-align:center; font-weight: 500">Funcionário que mais abre</p>
-                        <canvas id="pieChart3"></canvas>
+                        <canvas id="funcionarioMaisAbre"></canvas>
                     </div>
                     <div>
                         <p style="text-align:center; font-weight: 500">Funcionário que mais fecha</p>
-                        <canvas id="pieChart4"></canvas>
+                        <canvas id="funcionarioMaisFecha"></canvas>
                     </div>
             
                 </div>
@@ -83,10 +83,6 @@
         </div>
     </div>
 </div>
-
-<button class="fixed-button" onclick="$('.form-container').css('display', 'flex');">+</button>
-
-
 
 <script>
     // Dados vindos do Django
@@ -226,91 +222,50 @@
             },
         }
     };
-
-    {% comment %} var pieData = {
-        labels: ['Abertos', 'Fechados', 'Em Aberto'],
-        datasets: [{
-            data: [totalAbertos, totalFechados, totalEmAberto],
-            backgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
-            hoverBackgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
-            borderWidth: 0 // Remover bordas brancas
-        }]
-    };
-    
-
-    var pieCtx = document.getElementById("pieChart").getContext('2d');
-    var myPieChart = new Chart(pieCtx, {
-        type: 'doughnut',
-        data: pieData,
-        options: pieOptions
-    });
-    var pieCtx = document.getElementById("pieChart2").getContext('2d');
-    var myPieChart = new Chart(pieCtx, {
-        type: 'doughnut',
-        data: pieData,
-        options: pieOptions
-    });
-    var pieCtx = document.getElementById("pieChart3").getContext('2d');
-    var myPieChart = new Chart(pieCtx, {
-        type: 'doughnut',
-        data: pieData,
-        options: pieOptions
-    });
-    var pieCtx = document.getElementById("pieChart4").getContext('2d');
-    var myPieChart = new Chart(pieCtx, {
-        type: 'doughnut',
-        data: pieData,
-        options: pieOptions {% endcomment %}
-    {% comment %} }); {% endcomment %}
 </script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Obtendo os dados do contexto do Django
         const setoresMaisAbrem = {{ top_setores_abrem|safe }};
-            const setoresMaisRecebem = {{ top_setores_recebem|safe }};
-            const funcionariosMaisAbrem = {{ top_funcionarios_abrem|safe }};
-            const funcionariosMaisFecham = {{ top_funcionarios_fecham|safe }};
+        const setoresMaisRecebem = {{ top_setores_recebem|safe }};
+        const funcionariosMaisAbrem = {{ top_funcionarios_abrem|safe }};
+        const funcionariosMaisFecham = {{ top_funcionarios_fecham|safe }};
 
-            const createPieChart = (ctx, labels, data) => {
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: data,
-                            backgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
-                            hoverBackgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {}
-                });
-            };
+        const createDoughnutChart = (ctx, labels, data) => {
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
+                        hoverBackgroundColor: ['#91A3B0', '#D19C5F', '#E6CBA8'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'none'
+                        }
+                    }
+                }
+            });
+        };
 
-            const getLabels = (items, key) => items.map(item => item[key] && item[key].nome ? item[key].nome : 'Unknown');
-            const getData = (items, key) => items.map(item => item[key] || 0);
+        // Criando os gráficos com os dados do Django
+        const ctx1 = document.getElementById("setorMaisAbre").getContext('2d');
+        if (ctx1) createDoughnutChart(ctx1, setoresMaisAbrem.map(item => item[0]), setoresMaisAbrem.map(item => item[1]));
 
-            const labelsSetoresMaisAbrem = getLabels(setoresMaisAbrem, 'setor');
-            const dataSetoresMaisAbrem = getData(setoresMaisAbrem, 'total_abertos');
-            const labelsSetoresMaisRecebem = getLabels(setoresMaisRecebem, 'setor');
-            const dataSetoresMaisRecebem = getData(setoresMaisRecebem, 'total_recebidos');
-            const labelsFuncionariosMaisAbrem = getLabels(funcionariosMaisAbrem, 'funcionario');
-            const dataFuncionariosMaisAbrem = getData(funcionariosMaisAbrem, 'total_abertos');
-            const labelsFuncionariosMaisFecham = getLabels(funcionariosMaisFecham, 'funcionario');
-            const dataFuncionariosMaisFecham = getData(funcionariosMaisFecham, 'total_fechados');
+        const ctx2 = document.getElementById("setorMaisFecha").getContext('2d');
+        if (ctx2) createDoughnutChart(ctx2, setoresMaisRecebem.map(item => item[0]), setoresMaisRecebem.map(item => item[1]));
 
-            // Criando os gráficos
-            const ctx1 = document.getElementById("pieChart1");
-            if (ctx1) createPieChart(ctx1.getContext('2d'), labelsSetoresMaisAbrem, dataSetoresMaisAbrem);
-            
-            const ctx2 = document.getElementById("pieChart2");
-            if (ctx2) createPieChart(ctx2.getContext('2d'), labelsSetoresMaisRecebem, dataSetoresMaisRecebem);
-            
-            const ctx3 = document.getElementById("pieChart3");
-            if (ctx3) createPieChart(ctx3.getContext('2d'), labelsFuncionariosMaisAbrem, dataFuncionariosMaisAbrem);
-            
-            const ctx4 = document.getElementById("pieChart4");
-            if (ctx4) createPieChart(ctx4.getContext('2d'), labelsFuncionariosMaisFecham, dataFuncionariosMaisFecham);
-        });
+        const ctx3 = document.getElementById("funcionarioMaisAbre").getContext('2d');
+        if (ctx3) createDoughnutChart(ctx3, funcionariosMaisAbrem.map(item => item[0]), funcionariosMaisAbrem.map(item => item[1]));
+
+        const ctx4 = document.getElementById("funcionarioMaisFecha").getContext('2d');
+        if (ctx4) createDoughnutChart(ctx4, funcionariosMaisFecham.map(item => item[0]), funcionariosMaisFecham.map(item => item[1]));
+    });
 </script>
 {% endblock %}
